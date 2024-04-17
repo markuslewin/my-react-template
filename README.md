@@ -1,30 +1,30 @@
-# React + TypeScript + Vite
+# My React template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Download with [`degit`](https://github.com/Rich-Harris/degit).
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+npx degit markuslewin/my-react-template your-project-name
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+---
+
+This is my React template I use for building tiny demo apps. The template is an extension of Vite's `react-ts` template.
+
+## Features
+
+- [Vite](https://vitejs.dev/)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Router](https://reactrouter.com/en/main)
+- [Radix Primitives](https://www.radix-ui.com/primitives/docs/overview/introduction)
+- [Zod](https://zod.dev/)
+- [@epic-web/invariant](https://github.com/epicweb-dev/invariant)
+- [Playwright](https://playwright.dev/)
+
+## Adding fonts
+
+[Fontsource](https://fontsource.org/)
+
+## Adding SVG icons
+
+[`npm run build:icons`](https://www.jacobparis.com/content/svg-icons)
