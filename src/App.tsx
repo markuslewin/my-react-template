@@ -1,34 +1,55 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { useId, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const outputRef = useRef<HTMLParagraphElement>(null);
+  const colorInputId = useId();
+  const [favoriteColor, setFavoriteColor] = useState("");
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className="bg-black text-white">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+    <main className="min-h-screen px-4 py-6 tablet:px-10 tablet:py-20">
+      <div className="max-w-96 mx-auto">
+        <h1 className="text-heading text-center">My React template</h1>
+        <form
+          className="mt-12"
+          onSubmit={(event) => {
+            event.preventDefault();
+
+            const formData = new FormData(event.currentTarget);
+            const color = formData.get("color");
+            if (typeof color !== "string" || !color.trim()) return;
+
+            flushSync(() => {
+              setFavoriteColor(color);
+            });
+            outputRef.current?.focus();
+          }}
+        >
+          <div>
+            <label className="block" htmlFor={colorInputId}>
+              Favorite color:
+            </label>
+            <input
+              className="mt-2 w-full shape-py-3 shape-px-5 shape-border-2 border-transparent rounded-xl bg-slate-800 hocus:border-white transition-colors"
+              id={colorInputId}
+              type="text"
+              name="color"
+            />
+          </div>
+          <button
+            className="mt-4 shape-py-3 shape-px-5 shape-border-2 border-transparent rounded-xl bg-blue-700 hocus:bg-blue-500 transition-colors"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+        <p className="mt-6" ref={outputRef} tabIndex={-1}>
+          {favoriteColor
+            ? `Your favorite color is ${favoriteColor.toLowerCase()}!`
+            : null}
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </main>
   );
 }
 
