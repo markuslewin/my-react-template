@@ -12,7 +12,7 @@ const FavoriteColorSchema = z.object({
     }),
 });
 
-export function FavoriteColorForm() {
+export function FormValidation() {
   const outputRef = useRef<HTMLParagraphElement>(null);
   const [favoriteColor, setFavoriteColor] = useState("");
   const [form, fields] = useForm({
@@ -36,7 +36,9 @@ export function FavoriteColorForm() {
 
   return (
     <>
-      <form {...getFormProps(form)}>
+      <h1 className="text-heading-l">Form validation</h1>
+      <p className="mt-8">This form is validated with Conform and Zod.</p>
+      <form className="mt-8 max-w-sm" {...getFormProps(form)}>
         <div>
           <label className="block" htmlFor={fields.color.id}>
             Favorite color:
