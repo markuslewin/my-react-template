@@ -21,8 +21,9 @@ export default {
     },
     fontSize: {
       // todo: Add font sizes
-      heading: [rem(32), { fontWeight: 500, lineHeight: rem(32) }],
-      body: [rem(18), { lineHeight: rem(24) }],
+      "heading-l": [rem(61), { fontWeight: 500, lineHeight: rem(61) }],
+      "heading-m": [rem(48), { fontWeight: 500, lineHeight: rem(48) }],
+      body: [rem(20), { lineHeight: rem(24) }],
     },
     extend: {},
   },
