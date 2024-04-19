@@ -52,8 +52,8 @@ az staticwebapp create --name $PROJECT_NAME --resource-group $RESOURCE_GROUP --l
 - [React](https://react.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [React Router](https://reactrouter.com/en/main)
-- [Radix Primitives](https://www.radix-ui.com/primitives/docs/overview/introduction)
-- [Zod](https://zod.dev/)
+- Validation with [Zod](https://zod.dev/)
+- Form validation with [Conform](https://conform.guide/)
 - [@epic-web/invariant](https://github.com/epicweb-dev/invariant)
 - [Playwright](https://playwright.dev/)
 
@@ -64,3 +64,7 @@ az staticwebapp create --name $PROJECT_NAME --resource-group $RESOURCE_GROUP --l
 ## Adding SVG icons
 
 [`npm run build:icons`](https://www.jacobparis.com/content/svg-icons)
+
+## Adding accessible components
+
+- [Radix Primitives](https://www.radix-ui.com/primitives/docs/overview/introduction)
