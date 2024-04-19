@@ -16,6 +16,9 @@ export function Layout() {
             <li>
               <MyNavLink to="/form-validation">Form validation</MyNavLink>
             </li>
+            <li>
+              <MyNavLink to="/nested-routes">Nested routes</MyNavLink>
+            </li>
           </ul>
         </nav>
       </header>

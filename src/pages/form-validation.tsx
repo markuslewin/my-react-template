@@ -3,6 +3,8 @@ import { getZodConstraint, parseWithZod } from "@conform-to/zod";
 import { useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { z } from "zod";
+import { Input } from "../components/input";
+import { Button } from "../components/button";
 
 const FavoriteColorSchema = z.object({
   color: z
@@ -43,20 +45,12 @@ export function FormValidation() {
           <label className="block" htmlFor={fields.color.id}>
             Favorite color:
           </label>
-          <input
-            {...getInputProps(fields.color, { type: "text" })}
-            className="mt-2 w-full shape-py-3 shape-px-5 shape-border-2 border-transparent rounded-xl bg-slate-800 hocus:border-white transition-colors"
-          />
+          <Input {...getInputProps(fields.color, { type: "text" })} />
           <p className="mt-1 text-red-500" id={fields.color.errorId}>
             {fields.color.errors}
           </p>
         </div>
-        <button
-          className="mt-4 shape-py-3 shape-px-5 shape-border-2 border-transparent rounded-xl bg-blue-700 hocus:bg-blue-500 transition-colors"
-          type="submit"
-        >
-          Submit
-        </button>
+        <Button type="submit">Submit</Button>
       </form>
       <p className="mt-6" ref={outputRef} tabIndex={-1}>
         {favoriteColor
