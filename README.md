@@ -67,4 +67,4 @@ az staticwebapp create --name $PROJECT_NAME --resource-group $RESOURCE_GROUP --l
 
 ## Adding accessible components
 
-- [Radix Primitives](https://www.radix-ui.com/primitives/docs/overview/introduction)
+[Radix Primitives](https://www.radix-ui.com/primitives/docs/overview/introduction)

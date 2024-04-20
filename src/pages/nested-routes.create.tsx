@@ -9,6 +9,7 @@ import {
 import { z } from "zod";
 import { Input } from "../components/input";
 import { Button } from "../components/button";
+import { createMessage } from "../utils/messages";
 
 const AddMessageScheme = z.object({
   text: z.string(),
@@ -20,7 +21,7 @@ export async function action({ request }: ActionFunctionArgs) {
   const result = parseWithZod(formData, { schema: AddMessageScheme });
   if (result.status !== "success") return result.reply();
 
-  console.log("todo: Persist message", { message: result.value });
+  createMessage(result.value);
 
   return redirect("/nested-routes");
 }

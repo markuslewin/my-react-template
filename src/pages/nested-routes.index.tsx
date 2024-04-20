@@ -1,11 +1,11 @@
 import { Link, useLoaderData } from "react-router-dom";
+import { getMessages } from "../utils/messages";
 
 export function loader() {
+  const messages = getMessages() ?? [];
+
   return {
-    messages: [
-      { id: 0, text: "One" },
-      { id: 1, text: "Two" },
-    ],
+    messages,
   };
 }
 
