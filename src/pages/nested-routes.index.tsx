@@ -20,7 +20,7 @@ export function NestedRoutesIndex() {
           <li className="mt-4" key={message.id}>
             <Link
               className="underline underline-offset-4 hocus:no-underline"
-              to={`nested-routes/update/${message.id}`}
+              to={`/nested-routes/update/${message.id}`}
             >
               {message.text}
             </Link>

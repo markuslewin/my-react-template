@@ -12,6 +12,11 @@ import {
   NestedRoutesCreate,
   action as nestedRoutesCreateAction,
 } from "./pages/nested-routes.create";
+import {
+  NestedRoutesUpdate,
+  loader as nestedRoutesUpdateLoader,
+  action as nestedRoutesUpdateAction,
+} from "./pages/nested-routes.update.$id";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +25,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        // loader: homeLoader,
         Component: Home,
       },
       {
@@ -45,11 +49,12 @@ const router = createBrowserRouter([
             action: nestedRoutesCreateAction,
             Component: NestedRoutesCreate,
           },
-          // {
-          //   path: "update/:id",
-          //   action: nestedRoutesCreateAction,
-          //   Component: NestedRoutesCreate,
-          // },
+          {
+            path: "update/:id",
+            loader: nestedRoutesUpdateLoader,
+            action: nestedRoutesUpdateAction,
+            Component: NestedRoutesUpdate,
+          },
         ],
       },
     ],

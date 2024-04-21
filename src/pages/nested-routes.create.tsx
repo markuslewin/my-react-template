@@ -11,14 +11,14 @@ import { Input } from "../components/input";
 import { Button } from "../components/button";
 import { createMessage } from "../utils/messages";
 
-const AddMessageScheme = z.object({
+const AddMessageSchema = z.object({
   text: z.string(),
 });
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
 
-  const result = parseWithZod(formData, { schema: AddMessageScheme });
+  const result = parseWithZod(formData, { schema: AddMessageSchema });
   if (result.status !== "success") return result.reply();
 
   createMessage(result.value);
@@ -30,8 +30,11 @@ export function NestedRoutesCreate() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const lastResult = useActionData() as any;
   const [form, fields] = useForm({
-    constraint: getZodConstraint(AddMessageScheme),
+    constraint: getZodConstraint(AddMessageSchema),
     lastResult,
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: AddMessageSchema });
+    },
   });
 
   return (

@@ -1,9 +1,10 @@
 import { z } from "zod";
 import { getItem, setItem } from "./json-storage";
+import { createId } from "@paralleldrive/cuid2";
 
 const messagesKey = "messages";
 
-const MessageSchema = z.array(z.object({ id: z.number(), text: z.string() }));
+const MessageSchema = z.array(z.object({ id: z.string(), text: z.string() }));
 
 type Messages = z.infer<typeof MessageSchema>;
 type Message = Messages[number];
@@ -25,13 +26,8 @@ export function getMessages() {
 
 export function createMessage({ text }: MessageInput) {
   const messages = getMessages();
-  const id =
-    messages === null
-      ? 0
-      : Math.max(...messages.map((message) => message.id)) + 1;
-
   const message: Message = {
-    id,
+    id: createId(),
     text,
   };
 
