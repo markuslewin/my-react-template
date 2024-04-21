@@ -6,6 +6,7 @@ import { FormValidation } from "./pages/form-validation";
 import { NestedRoutes } from "./pages/nested-routes";
 import {
   NestedRoutesIndex,
+  action as nestedRoutesIndexAction,
   loader as nestedRoutesIndexLoader,
 } from "./pages/nested-routes.index";
 import {
@@ -42,6 +43,7 @@ const router = createBrowserRouter([
           {
             index: true,
             loader: nestedRoutesIndexLoader,
+            action: nestedRoutesIndexAction,
             Component: NestedRoutesIndex,
           },
           {
