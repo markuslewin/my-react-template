@@ -63,7 +63,10 @@ az staticwebapp create --name $PROJECT_NAME --resource-group $RESOURCE_GROUP --l
 
 ## Adding SVG icons
 
-[`npm run build:icons`](https://www.jacobparis.com/content/svg-icons)
+Add SVG icons to `/svg-icons`.
+
+- [Use svg sprite icons in React](https://www.jacobparis.com/content/svg-icons)
+- [Icons | The Epic Stack](https://github.com/epicweb-dev/epic-stack/blob/main/docs/icons.md)
 
 ## Adding accessible components
 
