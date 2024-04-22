@@ -42,7 +42,7 @@ $REPOSITORY_URL="https://github.com/markuslewin/$PROJECT_NAME"
 $BASE_DIRECTORY="/"
 $APP_LOCATION="$BASE_DIRECTORY"
 $API_LOCATION="${BASE_DIRECTORY}api"
-$OUTPUT_LOCATION="${BASE_DIRECTORY}dist"
+$OUTPUT_LOCATION="dist"
 az staticwebapp create --name $PROJECT_NAME --resource-group $RESOURCE_GROUP --location westeurope --sku Free --source $REPOSITORY_URL --branch main --app-location $APP_LOCATION --api-location $API_LOCATION --output-location $OUTPUT_LOCATION --login-with-github
 ```
 
