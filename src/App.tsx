@@ -18,6 +18,7 @@ import {
   loader as nestedRoutesUpdateLoader,
   action as nestedRoutesUpdateAction,
 } from "./pages/nested-routes.update.$id";
+import { OptimizedImage } from "./pages/optimized-image";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
             Component: NestedRoutesUpdate,
           },
         ],
+      },
+      {
+        path: "optimized-image",
+        Component: OptimizedImage,
       },
     ],
   },

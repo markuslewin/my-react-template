@@ -19,6 +19,9 @@ export function Layout() {
             <li>
               <MyNavLink to="/nested-routes">Nested routes</MyNavLink>
             </li>
+            <li>
+              <MyNavLink to="/optimized-image">Optimized image</MyNavLink>
+            </li>
           </ul>
         </nav>
       </header>
