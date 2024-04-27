@@ -5,7 +5,7 @@ export function ApiEndpoint() {
 
   useEffect(() => {
     let ignore = false;
-    fetch("/api/message")
+    fetch("/.netlify/functions/message")
       .then((response) => response.text())
       .then((text) => {
         if (ignore) return;
