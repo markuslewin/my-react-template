@@ -11,7 +11,7 @@ $PROJECT_NAME="my-app"
 npx degit markuslewin/my-react-template $PROJECT_NAME
 ```
 
-The project is set up to be hosted in Azure with Azure Static Web Apps (including a dynamic API with Azure Functions). The `dev` script uses [SWA CLI](https://azure.github.io/static-web-apps-cli/) to serve requests locally.
+The project is set up to be hosted at Netlify. The `dev` script uses [Netlify Dev](https://docs.netlify.com/cli/local-development/) to serve requests locally.
 
 ```bash
 cd $PROJECT_NAME
@@ -19,7 +19,7 @@ npm i
 npm run dev
 ```
 
-To use GitHub Actions for CI/CD, a GitHub repository must exist.
+To enable CI/CD, the project must be a Git repository hosted at GitHub.
 
 ```bash
 git init
@@ -28,22 +28,10 @@ git commit -m "Initialize react template"
 gh repo create --private --source . --push
 ```
 
-To deploy to Azure, a resource group must exist.
+Create the Netlify site. The input to the command doesn't matter - it'll be stored in the Netlify UI, but overridden by the settings in the `netlify.toml` file.
 
-```bash
-$RESOURCE_GROUP="my-resource-group"
-az group create --name $RESOURCE_GROUP --location westeurope
 ```
-
-Set up the GitHub repository to deploy to Azure from the main branch.
-
-```bash
-$REPOSITORY_URL="https://github.com/markuslewin/$PROJECT_NAME"
-$BASE_DIRECTORY="/"
-$APP_LOCATION="$BASE_DIRECTORY"
-$API_LOCATION="${BASE_DIRECTORY}api"
-$OUTPUT_LOCATION="dist"
-az staticwebapp create --name $PROJECT_NAME --resource-group $RESOURCE_GROUP --location westeurope --sku Free --source $REPOSITORY_URL --branch main --app-location $APP_LOCATION --api-location $API_LOCATION --output-location $OUTPUT_LOCATION --login-with-github
+npx netlify init
 ```
 
 ## Features
@@ -56,6 +44,10 @@ az staticwebapp create --name $PROJECT_NAME --resource-group $RESOURCE_GROUP --l
 - Form validation with [Conform](https://conform.guide/)
 - [@epic-web/invariant](https://github.com/epicweb-dev/invariant)
 - [Playwright](https://playwright.dev/)
+
+## Server runtime
+
+This template produces static files to be hosted on a static file server. Sometimes a server runtime is required - when bypassing restrictive CORS policies of a remote API, for example. For these scenarios, serverless functions can be created in `/netlify/functions`.
 
 ## Adding fonts
 
