@@ -5,3 +5,7 @@
 :root {
   color-scheme: dark;
 }
+
+body {
+  @apply font-base text-body bg-slate-950 text-white;
+}
