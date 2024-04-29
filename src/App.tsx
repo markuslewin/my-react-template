@@ -1,24 +1,24 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Layout } from "./components/layout";
-import { Home } from "./pages/home";
-import { ApiEndpoint } from "./pages/api-endpoint";
-import { FormValidation } from "./pages/form-validation";
-import { NestedRoutes } from "./pages/nested-routes";
+import { Home } from "./routes/home";
+import { ApiEndpoint } from "./routes/api-endpoint";
+import { FormValidation } from "./routes/form-validation";
+import { NestedRoutes } from "./routes/nested-routes";
 import {
   NestedRoutesIndex,
   action as nestedRoutesIndexAction,
   loader as nestedRoutesIndexLoader,
-} from "./pages/nested-routes.index";
+} from "./routes/nested-routes.index";
 import {
   NestedRoutesCreate,
   action as nestedRoutesCreateAction,
-} from "./pages/nested-routes.create";
+} from "./routes/nested-routes.create";
 import {
   NestedRoutesUpdate,
   loader as nestedRoutesUpdateLoader,
   action as nestedRoutesUpdateAction,
-} from "./pages/nested-routes.update.$id";
-import { OptimizedImage } from "./pages/optimized-image";
+} from "./routes/nested-routes.update.$id";
+import { OptimizedImage } from "./routes/optimized-image";
 
 const router = createBrowserRouter([
   {
