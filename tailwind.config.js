@@ -1,3 +1,4 @@
+import { screens } from "./src/utils/screens";
 import { clickable } from "./tailwind/clickable";
 import { hocus } from "./tailwind/hocus";
 import { rem } from "./tailwind/rem";
@@ -7,10 +8,7 @@ import { shape } from "./tailwind/shape";
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    screens: {
-      tablet: "40em",
-      desktop: "64em",
-    },
+    screens,
     // todo: Add colors
     // colors: {
     //   "moderate-blue": "hsl(238 40% 52%)",
