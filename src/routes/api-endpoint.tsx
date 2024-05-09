@@ -1,4 +1,11 @@
 import { useState, useEffect } from "react";
+import { AnnouncementHandle } from "../components/route-announcer";
+
+export const handle = {
+  announcement() {
+    return "API endpoint";
+  },
+} satisfies AnnouncementHandle;
 
 export function ApiEndpoint() {
   const [message, setMessage] = useState<string | null>(null);

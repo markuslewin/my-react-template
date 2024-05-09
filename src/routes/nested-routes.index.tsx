@@ -10,10 +10,17 @@ import { Icon } from "../components/icon";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { z } from "zod";
 import { getZodConstraint, parseWithZod } from "@conform-to/zod";
+import { AnnouncementHandle } from "../components/route-announcer";
 
 const DeleteMessageSchema = z.object({
   id: z.string(),
 });
+
+export const handle = {
+  announcement() {
+    return "Messages";
+  },
+} satisfies AnnouncementHandle;
 
 export function loader() {
   const messages = getMessages() ?? [];

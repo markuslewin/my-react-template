@@ -10,10 +10,17 @@ import { z } from "zod";
 import { Input } from "../components/input";
 import { Button } from "../components/button";
 import { createMessage } from "../utils/messages";
+import { AnnouncementHandle } from "../components/route-announcer";
 
 const AddMessageSchema = z.object({
   text: z.string(),
 });
+
+export const handle = {
+  announcement() {
+    return "Add a message";
+  },
+} satisfies AnnouncementHandle;
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();

@@ -3,6 +3,13 @@ import tabletImg from "../assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=web
 // @ts-expect-error TS doesn't understand search params?
 import mobileImg from "../assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=300&as=metadata";
 import { screens } from "../utils/screens";
+import { AnnouncementHandle } from "../components/route-announcer";
+
+export const handle = {
+  announcement() {
+    return "Optimized image";
+  },
+} satisfies AnnouncementHandle;
 
 export function OptimizedImage() {
   return (

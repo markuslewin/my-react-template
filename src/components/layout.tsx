@@ -4,6 +4,7 @@ import {
   Outlet,
   ScrollRestoration,
 } from "react-router-dom";
+import { RouteAnnouncer } from "./route-announcer";
 
 export function Layout() {
   return (
@@ -38,6 +39,7 @@ export function Layout() {
         </main>
       </div>
       <ScrollRestoration />
+      <RouteAnnouncer />
     </>
   );
 }

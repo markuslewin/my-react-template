@@ -13,11 +13,20 @@ import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { z } from "zod";
 import { getZodConstraint, parseWithZod } from "@conform-to/zod";
 import { Button } from "../components/button";
+import { AnnouncementHandle } from "../components/route-announcer";
+
+type LoaderData = ReturnType<typeof loader>;
 
 const UpdateMessageSchema = z.object({
   id: z.string(),
   text: z.string(),
 });
+
+export const handle = {
+  announcement(data) {
+    return `Update message "${data.message.text}"`;
+  },
+} satisfies AnnouncementHandle<LoaderData>;
 
 export function loader({ params }: LoaderFunctionArgs) {
   const { id } = params;
@@ -41,7 +50,7 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export function NestedRoutesUpdate() {
-  const { message } = useLoaderData() as ReturnType<typeof loader>;
+  const { message } = useLoaderData() as LoaderData;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const lastResult = useActionData() as any;
   const [form, fields] = useForm({

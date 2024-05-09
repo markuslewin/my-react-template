@@ -1,5 +1,12 @@
+import { AnnouncementHandle } from "../components/route-announcer";
 import { screens } from "../utils/screens";
 import { useMedia } from "../utils/use-media";
+
+export const handle = {
+  announcement() {
+    return "Home";
+  },
+} satisfies AnnouncementHandle;
 
 export function Home() {
   const tabletMatches = useMedia(`(min-width: ${screens.tablet})`);

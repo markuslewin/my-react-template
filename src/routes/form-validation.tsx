@@ -5,6 +5,7 @@ import { flushSync } from "react-dom";
 import { z } from "zod";
 import { Input } from "../components/input";
 import { Button } from "../components/button";
+import { AnnouncementHandle } from "../components/route-announcer";
 
 const FavoriteColorSchema = z.object({
   color: z
@@ -13,6 +14,12 @@ const FavoriteColorSchema = z.object({
       message: 'Color must be "blue"',
     }),
 });
+
+export const handle = {
+  announcement() {
+    return "Form validation";
+  },
+} satisfies AnnouncementHandle;
 
 export function FormValidation() {
   const outputRef = useRef<HTMLParagraphElement>(null);
