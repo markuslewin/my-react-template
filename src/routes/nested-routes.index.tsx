@@ -77,7 +77,7 @@ function Delete({ id }: { id: string }) {
     <Form {...getFormProps(form)} method="post">
       <input {...getInputProps(fields.id, { type: "hidden" })} />
       <button
-        className="size-10 grid place-items-center text-red-500 hocus:text-red-200 transition-colors"
+        className="size-10 grid place-items-center text-delete-foreground hocus:text-delete-foreground-hocus transition-colors"
         type="submit"
       >
         <Icon className="size-5" name="trash" />

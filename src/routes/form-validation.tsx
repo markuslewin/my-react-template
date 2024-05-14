@@ -53,7 +53,7 @@ export function FormValidation() {
             Favorite color:
           </label>
           <Input {...getInputProps(fields.color, { type: "text" })} />
-          <p className="mt-1 text-red-500" id={fields.color.errorId}>
+          <p className="mt-1 text-error-foreground" id={fields.color.errorId}>
             {fields.color.errors}
           </p>
         </div>

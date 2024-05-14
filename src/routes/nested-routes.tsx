@@ -26,7 +26,7 @@ function MyNavLink(props: MyNavLinkProps) {
     <NavLink
       className={({ isActive }) =>
         `rounded-full font-medium py-3 px-4 block transition-colors ${
-          isActive ? "bg-white text-slate-950" : ""
+          isActive ? "bg-pill text-pill-foreground" : ""
         }`
       }
       {...props}

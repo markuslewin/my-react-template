@@ -9,10 +9,36 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens,
-    // todo: Add colors
-    // colors: {
-    //   "moderate-blue": "hsl(238 40% 52%)",
-    // },
+    colors: {
+      // todo: Add colors
+      background: "hsl(var(--background))",
+      foreground: "hsl(var(--foreground))",
+      overlay: "hsl(var(--overlay))",
+      menu: {
+        DEFAULT: "hsl(var(--menu))",
+        foreground: "hsl(var(--menu-foreground))",
+      },
+      button: {
+        DEFAULT: "hsl(var(--button))",
+        foreground: "hsl(var(--button-foreground))",
+        hocus: "hsl(var(--button-hocus))",
+      },
+      input: {
+        DEFAULT: "hsl(var(--input))",
+        "border-hocus": "hsl(var(--input-border-hocus))",
+      },
+      pill: {
+        DEFAULT: "hsl(var(--pill))",
+        foreground: "hsl(var(--pill-foreground))",
+      },
+      delete: {
+        foreground: "hsl(var(--delete-foreground))",
+        "foreground-hocus": "hsl(var(--delete-foreground-hocus))",
+      },
+      error: {
+        foreground: "hsl(var(--error-foreground))",
+      },
+    },
     fontFamily: {
       // todo: Add font from Fontsource
       base: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif",
