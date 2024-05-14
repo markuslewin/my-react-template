@@ -10,6 +10,8 @@
     "build": "run-s build:*",
     "build:icons": "tsx build-icons.ts",
     "build:vite": "tsc && vite build",
+    "test": "playwright test",
+    "test:dev": "playwright test --ui",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
