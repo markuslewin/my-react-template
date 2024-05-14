@@ -8,6 +8,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { RouteAnnouncer } from "./route-announcer";
 import { useMedia } from "../utils/use-media";
 import { screens } from "../utils/screens";
+import { cva } from "class-variance-authority";
 
 export function Layout() {
   const tabletMatches = useMedia(`(min-width: ${screens.tablet})`);
@@ -87,14 +88,25 @@ export function Layout() {
   );
 }
 
-interface MyNavLinkProps extends Omit<NavLinkProps, "className"> {}
+const navLinkVariants = cva("hocus:underline hocus:underline-offset-4", {
+  variants: {
+    state: { active: "underline underline-offset-4" },
+  },
+});
 
-function MyNavLink(props: MyNavLinkProps) {
+interface MyNavLinkProps extends Omit<NavLinkProps, "className"> {
+  className?: string;
+}
+
+function MyNavLink({ className, ...props }: MyNavLinkProps) {
   return (
     <NavLink
       {...props}
       className={({ isActive }) =>
-        isActive ? `underline underline-offset-4` : undefined
+        navLinkVariants({
+          className,
+          state: isActive ? "active" : null,
+        })
       }
     />
   );
