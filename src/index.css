@@ -39,19 +39,17 @@
     @apply font-base text-body bg-background text-foreground;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: var(--color-slate-950);
-      --foreground: var(--color-white);
-      --menu: var(--color-slate-950);
-      --menu-foreground: var(--color-white);
-      --input: var(--color-slate-800);
-      --input-border-hocus: var(--color-white);
-      --pill: var(--color-white);
-      --pill-foreground: var(--color-slate-950);
+  :root[data-theme="dark"] {
+    --background: var(--color-slate-950);
+    --foreground: var(--color-white);
+    --menu: var(--color-slate-950);
+    --menu-foreground: var(--color-white);
+    --input: var(--color-slate-800);
+    --input-border-hocus: var(--color-white);
+    --pill: var(--color-white);
+    --pill-foreground: var(--color-slate-950);
 
-      color-scheme: dark;
-    }
+    color-scheme: dark;
   }
 }
 
