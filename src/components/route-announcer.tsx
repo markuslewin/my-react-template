@@ -19,15 +19,14 @@ export function RouteAnnouncer() {
     if (previousPath.current === pathname) return;
     previousPath.current = pathname;
 
-    const nextAnnouncement = matches
-      .map((match) => {
-        const result = AnnouncementHandleSchema.safeParse(match.handle);
-        if (!result.success) return null;
+    let nextAnnouncement: string | null = null;
+    for (const match of [...matches].reverse()) {
+      const result = AnnouncementHandleSchema.safeParse(match.handle);
+      if (!result.success) continue;
 
-        return result.data.announcement(match.data);
-      })
-      .reverse()
-      .find((match) => match !== null);
+      nextAnnouncement = result.data.announcement(match.data);
+      break;
+    }
 
     setAnnouncement(nextAnnouncement ?? "");
   }, [matches, pathname]);
