@@ -4,7 +4,7 @@ export function NestedRoutes() {
   return (
     <>
       <h1 className="text-heading-l">Nested routes</h1>
-      <ul className="my-8 flex flex-wrap gap-4 items-center">
+      <ul className="my-8 flex flex-wrap items-center gap-4">
         <li>
           <MyNavLink to={"/nested-routes"} end>
             Messages
@@ -25,7 +25,7 @@ function MyNavLink(props: MyNavLinkProps) {
   return (
     <NavLink
       className={({ isActive }) =>
-        `rounded-full font-medium py-3 px-4 block transition-colors ${
+        `block rounded-full px-4 py-3 font-medium transition-colors ${
           isActive ? "bg-pill text-pill-foreground" : ""
         }`
       }

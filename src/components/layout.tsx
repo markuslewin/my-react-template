@@ -20,9 +20,9 @@ export function Layout() {
   return (
     <>
       <div className="min-h-screen px-4 tablet:px-10">
-        <header className="max-w-5xl mx-auto py-6 flex flex-wrap justify-between gap-6">
+        <header className="mx-auto flex max-w-5xl flex-wrap justify-between gap-6 py-6">
           <p>Logo</p>
-          <div className="flex items-center flex-wrap gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             <button type="button" onClick={() => setTheme(nextTheme)}>
               Switch to {nextTheme} mode
             </button>
@@ -69,7 +69,7 @@ export function Layout() {
           </div>
         </header>
         <main>
-          <div className="max-w-3xl mx-auto py-6 tablet:py-20">
+          <div className="mx-auto max-w-3xl py-6 tablet:py-20">
             <Outlet />
           </div>
         </main>

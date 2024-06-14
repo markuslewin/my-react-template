@@ -51,7 +51,7 @@ export function NestedRoutesCreate() {
         <div>
           <label htmlFor={fields.text.id}>Text:</label>
           <Input {...getInputProps(fields.text, { type: "text" })} />
-          <p className="mt-1 text-red-500" id={fields.text.errorId}>
+          <p className="text-red-500 mt-1" id={fields.text.errorId}>
             {fields.text.errors}
           </p>
         </div>

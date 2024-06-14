@@ -31,11 +31,11 @@ export function Home() {
     <>
       <h1 className="text-heading-l">My React template</h1>
       <p className="mt-8">This is my React template.</p>
-      <h2 className="text-heading-m mt-24">Form validation</h2>
+      <h2 className="mt-24 text-heading-m">Form validation</h2>
       <FormValidation />
-      <h2 className="text-heading-m mt-24">Optimized image</h2>
+      <h2 className="mt-24 text-heading-m">Optimized image</h2>
       <OptimizedImage />
-      <h2 className="text-heading-m mt-24">API endpoint</h2>
+      <h2 className="mt-24 text-heading-m">API endpoint</h2>
       <ApiEndpoint />
     </>
   );
