@@ -6,14 +6,14 @@ import {
 } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
 import { RouteAnnouncer } from "./route-announcer";
-import { useMedia } from "../utils/use-media";
 import { screens } from "../utils/screens";
 import { cva } from "class-variance-authority";
 import { useTheme } from "../utils/theme";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 export function Layout() {
   const { theme, setTheme } = useTheme();
-  const tabletMatches = useMedia(`(min-width: ${screens.tablet})`);
+  const tabletMatches = useMediaQuery(`(min-width: ${screens.tablet})`);
 
   const nextTheme = theme === "dark" ? "light" : "dark";
 

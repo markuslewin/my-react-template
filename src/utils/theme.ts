@@ -1,25 +1,22 @@
-import { useEffect, useLayoutEffect, useState } from "react";
-import { useMedia } from "./use-media";
+import { useLayoutEffect, useMemo } from "react";
 import { z } from "zod";
-
-const ThemeSchema = z.enum(["light", "dark"]);
-
-type Theme = z.infer<typeof ThemeSchema>;
+import { useLocalStorage, useMediaQuery } from "@uidotdev/usehooks";
 
 const themeKey = "theme";
 
-export function useTheme() {
-  const [storedTheme, setStoredTheme] = useState(() => {
-    try {
-      const rawTheme = localStorage.getItem(themeKey);
-      return ThemeSchema.parse(rawTheme);
-    } catch {
-      return null;
-    }
-  });
-  const prefersDark = useMedia("(prefers-color-scheme: dark)");
+const themeSchema = z.enum(["light", "dark"]);
 
-  const theme = storedTheme ?? (prefersDark ? "dark" : "light");
+export type Theme = z.infer<typeof themeSchema>;
+
+export function useTheme() {
+  const [storedTheme, setStoredTheme] = useLocalStorage(themeKey);
+  const parsedTheme = useMemo(() => {
+    const result = themeSchema.safeParse(storedTheme);
+    return result.success ? result.data : null;
+  }, [storedTheme]);
+  const prefersDark = useMediaQuery("(prefers-color-scheme: dark)");
+
+  const theme: Theme = parsedTheme ?? (prefersDark ? "dark" : "light");
 
   useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -28,28 +25,9 @@ export function useTheme() {
     };
   }, [theme]);
 
-  useEffect(() => {
-    function handleStorageEvent(e: StorageEvent) {
-      if (e.key === null) {
-        setStoredTheme(null);
-        return;
-      }
-      if (e.key === themeKey) {
-        const result = ThemeSchema.safeParse(e.newValue);
-        setStoredTheme(result.success ? result.data : null);
-        return;
-      }
-    }
-    addEventListener("storage", handleStorageEvent);
-    return () => {
-      removeEventListener("storage", handleStorageEvent);
-    };
-  }, []);
-
   return {
     theme,
     setTheme(theme: Theme) {
-      localStorage.setItem(themeKey, theme);
       setStoredTheme(theme);
     },
   } as const;
