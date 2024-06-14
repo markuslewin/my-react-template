@@ -36,16 +36,7 @@ export function Layout() {
                     <MyNavLink to="/">Home</MyNavLink>
                   </li>
                   <li>
-                    <MyNavLink to="/api-endpoint">API endpoint</MyNavLink>
-                  </li>
-                  <li>
-                    <MyNavLink to="/form-validation">Form validation</MyNavLink>
-                  </li>
-                  <li>
                     <MyNavLink to="/nested-routes">Nested routes</MyNavLink>
-                  </li>
-                  <li>
-                    <MyNavLink to="/optimized-image">Optimized image</MyNavLink>
                   </li>
                 </ul>
               ) : (
@@ -65,21 +56,8 @@ export function Layout() {
                           <MyNavLink to="/">Home</MyNavLink>
                         </li>
                         <li>
-                          <MyNavLink to="/api-endpoint">API endpoint</MyNavLink>
-                        </li>
-                        <li>
-                          <MyNavLink to="/form-validation">
-                            Form validation
-                          </MyNavLink>
-                        </li>
-                        <li>
                           <MyNavLink to="/nested-routes">
                             Nested routes
-                          </MyNavLink>
-                        </li>
-                        <li>
-                          <MyNavLink to="/optimized-image">
-                            Optimized image
                           </MyNavLink>
                         </li>
                       </ul>
