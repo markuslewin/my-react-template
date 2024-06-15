@@ -11,6 +11,7 @@ import tabletImg from "../assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=web
 import mobileImg from "../assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=300&as=metadata";
 import { screens } from "../utils/screens";
 import { AnnouncementHandle } from "../components/route-announcer";
+import * as Landmark from "../components/landmark";
 
 export const handle = {
   announcement() {
@@ -35,8 +36,12 @@ export function Home() {
       <FormValidation />
       <h2 className="mt-24 text-heading-m">Optimized image</h2>
       <OptimizedImage />
-      <h2 className="mt-24 text-heading-m">API endpoint</h2>
-      <ApiEndpoint />
+      <Landmark.Root>
+        <Landmark.Label>
+          <h2 className="mt-24 text-heading-m">API endpoint</h2>
+        </Landmark.Label>
+        <ApiEndpoint />
+      </Landmark.Root>
     </>
   );
 }
