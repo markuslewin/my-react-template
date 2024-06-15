@@ -32,6 +32,8 @@ export function Home() {
     <>
       <h1 className="text-heading-l">My React template</h1>
       <p className="mt-8">This is my React template.</p>
+      <h2 className="mt-24 text-heading-m">Node environment</h2>
+      <NodeEnvironment />
       <h2 className="mt-24 text-heading-m">Form validation</h2>
       <FormValidation />
       <h2 className="mt-24 text-heading-m">Optimized image</h2>
@@ -43,6 +45,15 @@ export function Home() {
         <ApiEndpoint />
       </Landmark.Root>
     </>
+  );
+}
+
+function NodeEnvironment() {
+  return (
+    <p className="mt-8">
+      The current node environment is:{" "}
+      <strong data-testid="node-env">{process.env.NODE_ENV}</strong>
+    </p>
   );
 }
 

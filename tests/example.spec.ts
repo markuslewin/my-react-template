@@ -19,3 +19,9 @@ test("has api endpoint landmark", async ({ page }) => {
     page.getByRole("region", { name: "api endpoint" }),
   ).toBeAttached();
 });
+
+test("runs tests in test node env", async ({ page }) => {
+  await page.goto("/");
+
+  await expect(page.getByTestId("node-env")).toHaveText("test");
+});
