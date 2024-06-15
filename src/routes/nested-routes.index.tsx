@@ -5,12 +5,12 @@ import {
   redirect,
   useLoaderData,
 } from "react-router-dom";
-import { deleteMessage, getMessages } from "../utils/messages";
-import { Icon } from "../components/icon";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { z } from "zod";
 import { getZodConstraint, parseWithZod } from "@conform-to/zod";
-import { AnnouncementHandle } from "../components/route-announcer";
+import { Icon } from "#src/components/icon";
+import { AnnouncementHandle } from "#src/components/route-announcer";
+import { getMessages, deleteMessage } from "#src/utils/messages";
 
 const DeleteMessageSchema = z.object({
   id: z.string(),

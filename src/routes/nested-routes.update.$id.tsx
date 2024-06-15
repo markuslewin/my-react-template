@@ -6,14 +6,14 @@ import {
   useActionData,
   useLoaderData,
 } from "react-router-dom";
-import { getMessage, updateMessage } from "../utils/messages";
 import { invariantResponse } from "@epic-web/invariant";
-import { Input } from "../components/input";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { z } from "zod";
 import { getZodConstraint, parseWithZod } from "@conform-to/zod";
-import { Button } from "../components/button";
-import { AnnouncementHandle } from "../components/route-announcer";
+import { Button } from "#src/components/button";
+import { AnnouncementHandle } from "#src/components/route-announcer";
+import { getMessage, updateMessage } from "#src/utils/messages";
+import { Input } from "#src/components/input";
 
 type LoaderData = ReturnType<typeof loader>;
 

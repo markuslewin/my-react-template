@@ -1,24 +1,24 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Layout } from "./components/layout";
-import { Home, handle as homeHandle } from "./routes/home";
-import { NestedRoutes } from "./routes/nested-routes";
+import { Layout } from "#src/components/layout";
+import { Home, handle as homeHandle } from "#src/routes/home";
+import { NestedRoutes } from "#src/routes/nested-routes";
 import {
   NestedRoutesIndex,
   handle as nestedRoutesIndexHandle,
   action as nestedRoutesIndexAction,
   loader as nestedRoutesIndexLoader,
-} from "./routes/nested-routes.index";
+} from "#src/routes/nested-routes.index";
 import {
   NestedRoutesCreate,
   handle as nestedRoutesCreateHandle,
   action as nestedRoutesCreateAction,
-} from "./routes/nested-routes.create";
+} from "#src/routes/nested-routes.create";
 import {
   NestedRoutesUpdate,
   loader as nestedRoutesUpdateLoader,
   action as nestedRoutesUpdateAction,
   handle as nestedRoutesUpdateHandle,
-} from "./routes/nested-routes.update.$id";
+} from "#src/routes/nested-routes.update.$id";
 
 const router = createBrowserRouter([
   {

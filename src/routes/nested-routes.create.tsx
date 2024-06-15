@@ -1,3 +1,7 @@
+import { Button } from "#src/components/button";
+import { Input } from "#src/components/input";
+import { AnnouncementHandle } from "#src/components/route-announcer";
+import { createMessage } from "#src/utils/messages";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { getZodConstraint, parseWithZod } from "@conform-to/zod";
 import {
@@ -7,10 +11,6 @@ import {
   useActionData,
 } from "react-router-dom";
 import { z } from "zod";
-import { Input } from "../components/input";
-import { Button } from "../components/button";
-import { createMessage } from "../utils/messages";
-import { AnnouncementHandle } from "../components/route-announcer";
 
 const AddMessageSchema = z.object({
   text: z.string(),

@@ -5,11 +5,11 @@ import {
   ScrollRestoration,
 } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
-import { RouteAnnouncer } from "./route-announcer";
-import { screens } from "../utils/screens";
 import { cva } from "class-variance-authority";
-import { useTheme } from "../utils/theme";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { RouteAnnouncer } from "#src/components/route-announcer";
+import { screens } from "#src/utils/screens";
+import { useTheme } from "#src/utils/theme";
 
 export function Layout() {
   const { theme, setTheme } = useTheme();

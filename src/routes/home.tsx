@@ -3,15 +3,15 @@ import { getZodConstraint, parseWithZod } from "@conform-to/zod";
 import { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { z } from "zod";
-import { Input } from "../components/input";
-import { Button } from "../components/button";
 // @ts-expect-error TS doesn't understand search params?
 import tabletImg from "../assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=768&as=metadata";
 // @ts-expect-error TS doesn't understand search params?
 import mobileImg from "../assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=300&as=metadata";
-import { screens } from "../utils/screens";
-import { AnnouncementHandle } from "../components/route-announcer";
 import * as Landmark from "../components/landmark";
+import { Button } from "#src/components/button";
+import { AnnouncementHandle } from "#src/components/route-announcer";
+import { screens } from "#src/utils/screens";
+import { Input } from "#src/components/input";
 
 export const handle = {
   announcement() {
