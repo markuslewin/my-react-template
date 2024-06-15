@@ -9,7 +9,5 @@ test("has title", async ({ page }) => {
 test("receives data from function", async ({ page }) => {
   await page.goto("/");
 
-  await page.getByRole("link", { name: "API endpoint" }).click();
-
-  await expect(page.getByText(/hello, world/i)).toBeVisible();
+  await expect(page.getByTestId("server-message")).toHaveText("Hello, world!");
 });

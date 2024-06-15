@@ -133,7 +133,9 @@ function ApiEndpoint() {
   return (
     <>
       <p className="mt-8">The server says:</p>
-      <pre className="mt-4">{message === null ? "Loading..." : message}</pre>
+      <pre className="mt-4" data-testid="server-message">
+        {message === null ? "Loading..." : message}
+      </pre>
     </>
   );
 }
