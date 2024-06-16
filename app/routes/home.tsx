@@ -12,7 +12,7 @@ import { Button } from "#app/components/button";
 import { AnnouncementHandle } from "#app/components/route-announcer";
 import { screens } from "#app/utils/screens";
 import { Input } from "#app/components/input";
-import { Picture, Source, Image } from "#app/components/picture.js";
+import { Picture, Source, Image } from "#app/components/picture";
 
 export const handle = {
   announcement() {

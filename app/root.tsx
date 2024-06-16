@@ -19,6 +19,7 @@ import {
   action as nestedRoutesUpdateAction,
   handle as nestedRoutesUpdateHandle,
 } from "#app/routes/nested-routes.update.$id";
+import { AnnouncementProvider } from "#app/components/announcer/announcement-provider";
 
 const router = createBrowserRouter([
   {
@@ -61,7 +62,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <AnnouncementProvider>
+      <RouterProvider router={router} />
+    </AnnouncementProvider>
+  );
 }
 
 export default App;

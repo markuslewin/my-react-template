@@ -10,6 +10,7 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 import { RouteAnnouncer } from "#app/components/route-announcer";
 import { screens } from "#app/utils/screens";
 import { useTheme } from "#app/utils/theme";
+import { Announcer } from "#app/components/announcer/announcer";
 
 export function Layout() {
   const { theme, setTheme } = useTheme();
@@ -75,6 +76,7 @@ export function Layout() {
         </main>
       </div>
       <ScrollRestoration />
+      <Announcer />
       <RouteAnnouncer />
     </>
   );
