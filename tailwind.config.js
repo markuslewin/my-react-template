@@ -1,4 +1,4 @@
-import { screens } from "./src/utils/screens";
+import { screens } from "./app/utils/screens";
 import { clickable } from "./tailwind/clickable";
 import { hocus } from "./tailwind/hocus";
 import { rem } from "./tailwind/rem";
@@ -6,7 +6,7 @@ import { shape } from "./tailwind/shape";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./app/**/*.{js,ts,jsx,tsx}"],
   darkMode: ["selector", '[data-theme="dark"]'],
   theme: {
     screens,

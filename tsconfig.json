@@ -21,13 +21,13 @@
     "noFallthroughCasesInSwitch": true,
 
     "paths": {
-      "#src/*": ["./src/*"],
+      "#app/*": ["./app/*"],
       "@/icon-name": [
-        "./src/components/icons/name.d.ts",
+        "./app/components/icons/name.d.ts",
         "./types/icon-name.d.ts"
       ]
     }
   },
-  "include": ["src"],
+  "include": ["app"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

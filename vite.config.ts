@@ -16,6 +16,6 @@ export default defineConfig({
   },
   plugins: [react(), imagetools()],
   test: {
-    include: ["./src/**/*.test.{ts,tsx}"],
+    include: ["./app/**/*.test.{ts,tsx}"],
   },
 });

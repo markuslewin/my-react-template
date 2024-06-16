@@ -8,9 +8,9 @@ import {
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { z } from "zod";
 import { getZodConstraint, parseWithZod } from "@conform-to/zod";
-import { Icon } from "#src/components/icon";
-import { AnnouncementHandle } from "#src/components/route-announcer";
-import { getMessages, deleteMessage } from "#src/utils/messages";
+import { Icon } from "#app/components/icon";
+import { AnnouncementHandle } from "#app/components/route-announcer";
+import { getMessages, deleteMessage } from "#app/utils/messages";
 
 const DeleteMessageSchema = z.object({
   id: z.string(),

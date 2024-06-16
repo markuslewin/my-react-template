@@ -10,10 +10,10 @@ import { invariantResponse } from "@epic-web/invariant";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { z } from "zod";
 import { getZodConstraint, parseWithZod } from "@conform-to/zod";
-import { Button } from "#src/components/button";
-import { AnnouncementHandle } from "#src/components/route-announcer";
-import { getMessage, updateMessage } from "#src/utils/messages";
-import { Input } from "#src/components/input";
+import { Button } from "#app/components/button";
+import { AnnouncementHandle } from "#app/components/route-announcer";
+import { getMessage, updateMessage } from "#app/utils/messages";
+import { Input } from "#app/components/input";
 
 type LoaderData = ReturnType<typeof loader>;
 

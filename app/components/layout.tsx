@@ -7,9 +7,9 @@ import {
 import * as Dialog from "@radix-ui/react-dialog";
 import { cva } from "class-variance-authority";
 import { useMediaQuery } from "@uidotdev/usehooks";
-import { RouteAnnouncer } from "#src/components/route-announcer";
-import { screens } from "#src/utils/screens";
-import { useTheme } from "#src/utils/theme";
+import { RouteAnnouncer } from "#app/components/route-announcer";
+import { screens } from "#app/utils/screens";
+import { useTheme } from "#app/utils/theme";
 
 export function Layout() {
   const { theme, setTheme } = useTheme();

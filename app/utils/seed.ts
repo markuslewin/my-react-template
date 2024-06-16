@@ -1,4 +1,4 @@
-import { getMessages, createMessage } from "#src/utils/messages";
+import { getMessages, createMessage } from "#app/utils/messages";
 
 (function () {
   if (getMessages()) return;

@@ -27,7 +27,7 @@ dist-ssr
 .netlify
 
 # Generated files
-/src/components/icons
+/app/components/icons
 
 # Playwright
 /test-results/
