@@ -28,9 +28,11 @@ git commit -m "Initialize react template"
 gh repo create --private --source . --push
 ```
 
-Create the Netlify site. The input to the command doesn't matter - it'll be stored in the Netlify UI, but overridden by the settings in the `netlify.toml` file.
+If you're initializing the project in a monorepo, use Netlify UI to set up the build. Set the base path or the package path to the root of the project, as seen in the [recommended monorepo setup](https://docs.netlify.com/configure-builds/monorepos/#recommended-monorepo-setup).
 
-```
+If the repository root and the project root are the same, the CI/CD can be set up from the command-line.
+
+```bash
 npx netlify init
 ```
 

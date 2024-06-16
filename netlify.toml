@@ -8,7 +8,6 @@
   targetPort = 5173
 
 [build]
-  base = "/"
   publish = "dist"
   command = "npm run build"
 
