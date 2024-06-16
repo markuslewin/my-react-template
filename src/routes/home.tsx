@@ -3,15 +3,16 @@ import { getZodConstraint, parseWithZod } from "@conform-to/zod";
 import { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { z } from "zod";
-// @ts-expect-error TS doesn't understand search params?
-import tabletImg from "../assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=768&as=metadata";
-// @ts-expect-error TS doesn't understand search params?
-import mobileImg from "../assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=300&as=metadata";
-import * as Landmark from "../components/landmark";
+// @ts-expect-error Search params
+import tabletImg from "#src/assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=768&as=metadata";
+// @ts-expect-error Search params
+import mobileImg from "#src/assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=300&as=metadata";
+import * as Landmark from "#src/components/landmark";
 import { Button } from "#src/components/button";
 import { AnnouncementHandle } from "#src/components/route-announcer";
 import { screens } from "#src/utils/screens";
 import { Input } from "#src/components/input";
+import { Picture, Source, Image } from "#src/components/picture.js";
 
 export const handle = {
   announcement() {
@@ -52,7 +53,7 @@ function NodeEnvironment() {
   return (
     <p className="mt-8">
       The current node environment is:{" "}
-      <strong data-testid="node-env">{process.env.NODE_ENV}</strong>
+      <strong data-testid="node-env">{process.env.NODE_ENV}</strong>.
     </p>
   );
 }
@@ -110,21 +111,14 @@ function OptimizedImage() {
         The original image was <strong>3.5 MB</strong>, but the following image
         is <strong>163 kB</strong>.
       </p>
-      <picture>
-        <source
-          media={`(min-width: ${screens.tablet})`}
-          width={tabletImg.width}
-          height={tabletImg.height}
-          srcSet={tabletImg.src}
-        />
-        <img
-          className="mt-6 w-full"
+      <Picture>
+        <Source media={`(min-width: ${screens.tablet})`} image={tabletImg} />
+        <Image
+          className="mt-6 w-full bg-[hsl(189_90%_31%)]"
           alt="The optimized image"
-          width={mobileImg.width}
-          height={mobileImg.height}
-          src={mobileImg.src}
+          image={mobileImg}
         />
-      </picture>
+      </Picture>
     </>
   );
 }
