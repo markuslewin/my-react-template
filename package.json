@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "imports": {
-    "#app/*": "./app/*"
+    "#app/*": "./app/*",
+    "#tests/*": "./tests/*"
   },
   "scripts": {
     "predev": "npm run build:icons --silent",
