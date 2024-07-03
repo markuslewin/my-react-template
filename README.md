@@ -3,6 +3,9 @@
 This is my React template I use for building tiny demo apps. The template is an
 extension of Vite's `react-ts` template.
 
+This template is heavily influenced by the
+[The Epic Stack](https://github.com/epicweb-dev/epic-stack).
+
 ## Getting started
 
 The template can be downloaded with
@@ -58,9 +61,9 @@ npx netlify init
 ## Server runtime
 
 This template produces static files to be hosted on a static file server.
-Sometimes a server runtime is required - when bypassing restrictive CORS
-policies of a remote API, for example. For these scenarios, serverless functions
-can be created in `/netlify/functions`.
+Sometimes a server runtime is required - when hiding API keys, or bypassing
+restrictive CORS policies, for example. For these scenarios, serverless
+functions can be created in `/netlify/functions`.
 
 ## Adding fonts
 
