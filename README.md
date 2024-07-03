@@ -1,17 +1,21 @@
 # My React template
 
-This is my React template I use for building tiny demo apps. The template is an extension of Vite's `react-ts` template.
+This is my React template I use for building tiny demo apps. The template is an
+extension of Vite's `react-ts` template.
 
 ## Getting started
 
-The template can be downloaded with [`degit`](https://github.com/Rich-Harris/degit).
+The template can be downloaded with
+[`degit`](https://github.com/Rich-Harris/degit).
 
 ```bash
 $PROJECT_NAME="my-app"
 npx degit markuslewin/my-react-template $PROJECT_NAME
 ```
 
-The project is set up to be hosted at Netlify. The `dev` script uses [Netlify Dev](https://docs.netlify.com/cli/local-development/) to serve requests locally.
+The project is set up to be hosted at Netlify. The `dev` script uses
+[Netlify Dev](https://docs.netlify.com/cli/local-development/) to serve requests
+locally.
 
 ```bash
 cd $PROJECT_NAME
@@ -28,9 +32,13 @@ git commit -m "Initialize react template"
 gh repo create --private --source . --push
 ```
 
-If you're initializing the project in a monorepo, use Netlify UI to set up the build. Set the base path or the package path to the root of the project, as seen in the [recommended monorepo setup](https://docs.netlify.com/configure-builds/monorepos/#recommended-monorepo-setup).
+If you're initializing the project in a monorepo, use Netlify UI to set up the
+build. Set the base path or the package path to the root of the project, as seen
+in the
+[recommended monorepo setup](https://docs.netlify.com/configure-builds/monorepos/#recommended-monorepo-setup).
 
-If the repository root and the project root are the same, the CI/CD can be set up from the command-line.
+If the repository root and the project root are the same, the CI/CD can be set
+up from the command-line.
 
 ```bash
 npx netlify init
@@ -49,7 +57,10 @@ npx netlify init
 
 ## Server runtime
 
-This template produces static files to be hosted on a static file server. Sometimes a server runtime is required - when bypassing restrictive CORS policies of a remote API, for example. For these scenarios, serverless functions can be created in `/netlify/functions`.
+This template produces static files to be hosted on a static file server.
+Sometimes a server runtime is required - when bypassing restrictive CORS
+policies of a remote API, for example. For these scenarios, serverless functions
+can be created in `/netlify/functions`.
 
 ## Adding fonts
 

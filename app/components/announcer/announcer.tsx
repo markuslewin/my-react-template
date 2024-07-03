@@ -1,13 +1,13 @@
-import { useAnnouncer } from "#app/components/announcer";
+import { useAnnouncer } from '#app/components/announcer'
 
 export function Announcer() {
-  const { announcements } = useAnnouncer();
+	const { announcements } = useAnnouncer()
 
-  return (
-    <div className="sr-only" aria-live="assertive">
-      {announcements.map((announcement) => (
-        <p key={announcement.id}>{announcement.message}</p>
-      ))}
-    </div>
-  );
+	return (
+		<div className="sr-only" aria-live="assertive">
+			{announcements.map((announcement) => (
+				<p key={announcement.id}>{announcement.message}</p>
+			))}
+		</div>
+	)
 }

@@ -37,6 +37,7 @@
     "zod": "^3.22.5"
   },
   "devDependencies": {
+    "@epic-web/config": "^1.11.2",
     "@playwright/test": "^1.44.0",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.12.12",

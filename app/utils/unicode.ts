@@ -1,1 +1,1 @@
-export const nbsp = "\u00a0";
+export const nbsp = '\u00a0'
