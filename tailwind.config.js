@@ -3,6 +3,7 @@ import { clickable } from "./tailwind/clickable";
 import { hocus } from "./tailwind/hocus";
 import { rem } from "./tailwind/rem";
 import { shape } from "./tailwind/shape";
+import { center } from "./tailwind/center";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -52,5 +53,5 @@ export default {
     },
     extend: {},
   },
-  plugins: [hocus, shape, clickable],
+  plugins: [hocus, shape, clickable, center],
 };
