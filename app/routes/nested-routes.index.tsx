@@ -1,15 +1,15 @@
+import { getFormProps, getInputProps, useForm } from '@conform-to/react'
+import { getZodConstraint, parseWithZod } from '@conform-to/zod'
 import {
-	ActionFunctionArgs,
+	type ActionFunctionArgs,
 	Form,
 	Link,
 	redirect,
 	useLoaderData,
 } from 'react-router-dom'
-import { getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { z } from 'zod'
-import { getZodConstraint, parseWithZod } from '@conform-to/zod'
 import { Icon } from '#app/components/icon'
-import { AnnouncementHandle } from '#app/components/route-announcer'
+import { type AnnouncementHandle } from '#app/components/route-announcer'
 import { getMessages, deleteMessage } from '#app/utils/messages'
 
 const DeleteMessageSchema = z.object({

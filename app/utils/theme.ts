@@ -1,6 +1,6 @@
+import { useLocalStorage, useMediaQuery } from '@uidotdev/usehooks'
 import { useLayoutEffect, useMemo } from 'react'
 import { z } from 'zod'
-import { useLocalStorage, useMediaQuery } from '@uidotdev/usehooks'
 
 const themeKey = 'theme'
 

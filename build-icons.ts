@@ -18,11 +18,11 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import * as path from 'node:path'
+import { invariant } from '@epic-web/invariant'
 import { $ } from 'execa'
 import fsExtra from 'fs-extra'
 import { glob } from 'glob'
 import { parse } from 'node-html-parser'
-import { invariant } from '@epic-web/invariant'
 
 const cwd = process.cwd()
 const inputDir = path.join(cwd, 'svg-icons')

@@ -1,6 +1,6 @@
-import { ReactNode, useState } from 'react'
 import { createId } from '@paralleldrive/cuid2'
-import { Announcement, context } from '#app/components/announcer/common'
+import { type ReactNode, useState } from 'react'
+import { type Announcement, context } from '#app/components/announcer/common'
 
 const DELETION_DELAY = 7000
 

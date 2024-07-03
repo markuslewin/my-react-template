@@ -1,4 +1,8 @@
-import { HTMLAttributes, ImgHTMLAttributes, SourceHTMLAttributes } from 'react'
+import {
+	type HTMLAttributes,
+	type ImgHTMLAttributes,
+	type SourceHTMLAttributes,
+} from 'react'
 
 export interface Image {
 	src: string

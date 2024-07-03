@@ -1,8 +1,8 @@
 import { invariant } from '@epic-web/invariant'
 import { Slot } from '@radix-ui/react-slot'
 import {
-	HTMLAttributes,
-	ReactNode,
+	type HTMLAttributes,
+	type ReactNode,
 	createContext,
 	useContext,
 	useId,

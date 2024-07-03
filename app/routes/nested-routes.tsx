@@ -1,4 +1,4 @@
-import { NavLink, NavLinkProps, Outlet } from 'react-router-dom'
+import { NavLink, type NavLinkProps, Outlet } from 'react-router-dom'
 
 export function NestedRoutes() {
 	return (

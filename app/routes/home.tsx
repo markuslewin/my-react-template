@@ -4,15 +4,15 @@ import { useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { z } from 'zod'
 // @ts-expect-error Search params
-import tabletImg from '#app/assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=768&as=metadata'
-// @ts-expect-error Search params
 import mobileImg from '#app/assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=300&as=metadata'
-import * as Landmark from '#app/components/landmark'
+// @ts-expect-error Search params
+import tabletImg from '#app/assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=768&as=metadata'
 import { Button } from '#app/components/button'
-import { AnnouncementHandle } from '#app/components/route-announcer'
-import { screens } from '#app/utils/screens'
 import { Input } from '#app/components/input'
+import * as Landmark from '#app/components/landmark'
 import { Picture, Source, Image } from '#app/components/picture'
+import { type AnnouncementHandle } from '#app/components/route-announcer'
+import { screens } from '#app/utils/screens'
 
 export const handle = {
 	announcement() {

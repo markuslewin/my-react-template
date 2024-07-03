@@ -1,6 +1,6 @@
-import { context } from '#app/components/announcer/common'
 import { invariant } from '@epic-web/invariant'
 import { useContext } from 'react'
+import { context } from '#app/components/announcer/common'
 
 export function useAnnouncer() {
 	const value = useContext(context)

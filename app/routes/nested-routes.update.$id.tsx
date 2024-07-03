@@ -1,19 +1,19 @@
+import { getFormProps, getInputProps, useForm } from '@conform-to/react'
+import { getZodConstraint, parseWithZod } from '@conform-to/zod'
+import { invariantResponse } from '@epic-web/invariant'
 import {
-	ActionFunctionArgs,
+	type ActionFunctionArgs,
 	Form,
-	LoaderFunctionArgs,
+	type LoaderFunctionArgs,
 	redirect,
 	useActionData,
 	useLoaderData,
 } from 'react-router-dom'
-import { invariantResponse } from '@epic-web/invariant'
-import { getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { z } from 'zod'
-import { getZodConstraint, parseWithZod } from '@conform-to/zod'
 import { Button } from '#app/components/button'
-import { AnnouncementHandle } from '#app/components/route-announcer'
-import { getMessage, updateMessage } from '#app/utils/messages'
 import { Input } from '#app/components/input'
+import { type AnnouncementHandle } from '#app/components/route-announcer'
+import { getMessage, updateMessage } from '#app/utils/messages'
 
 type LoaderData = ReturnType<typeof loader>
 
@@ -51,7 +51,6 @@ export async function action({ request }: ActionFunctionArgs) {
 
 export function NestedRoutesUpdate() {
 	const { message } = useLoaderData() as LoaderData
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const lastResult = useActionData() as any
 	const [form, fields] = useForm({
 		constraint: getZodConstraint(UpdateMessageSchema),

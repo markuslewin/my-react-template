@@ -1,16 +1,16 @@
-import { Button } from '#app/components/button'
-import { Input } from '#app/components/input'
-import { AnnouncementHandle } from '#app/components/route-announcer'
-import { createMessage } from '#app/utils/messages'
 import { getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
 import {
-	ActionFunctionArgs,
+	type ActionFunctionArgs,
 	Form,
 	redirect,
 	useActionData,
 } from 'react-router-dom'
 import { z } from 'zod'
+import { Button } from '#app/components/button'
+import { Input } from '#app/components/input'
+import { type AnnouncementHandle } from '#app/components/route-announcer'
+import { createMessage } from '#app/utils/messages'
 
 const AddMessageSchema = z.object({
 	text: z.string(),
@@ -34,7 +34,6 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export function NestedRoutesCreate() {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const lastResult = useActionData() as any
 	const [form, fields] = useForm({
 		constraint: getZodConstraint(AddMessageSchema),

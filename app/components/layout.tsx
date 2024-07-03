@@ -1,16 +1,16 @@
+import * as Dialog from '@radix-ui/react-dialog'
+import { useMediaQuery } from '@uidotdev/usehooks'
+import { cva } from 'class-variance-authority'
 import {
 	NavLink,
-	NavLinkProps,
+	type NavLinkProps,
 	Outlet,
 	ScrollRestoration,
 } from 'react-router-dom'
-import * as Dialog from '@radix-ui/react-dialog'
-import { cva } from 'class-variance-authority'
-import { useMediaQuery } from '@uidotdev/usehooks'
+import { Announcer } from '#app/components/announcer'
 import { RouteAnnouncer } from '#app/components/route-announcer'
 import { screens } from '#app/utils/screens'
 import { useTheme } from '#app/utils/theme'
-import { Announcer } from '#app/components/announcer'
 
 export function Layout() {
 	const { theme, setTheme } = useTheme()

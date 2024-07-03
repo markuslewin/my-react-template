@@ -1,11 +1,11 @@
+import { invariant } from '@epic-web/invariant'
+import { calculateClamps } from 'utopia-core'
 import { screens } from './app/utils/screens'
+import { center } from './tailwind/center'
 import { clickable } from './tailwind/clickable'
 import { hocus } from './tailwind/hocus'
 // import { rem } from "./tailwind/rem";
 import { shape } from './tailwind/shape'
-import { center } from './tailwind/center'
-import { calculateClamps } from 'utopia-core'
-import { invariant } from '@epic-web/invariant'
 
 const clamps = calculateClamps({
 	minWidth: 375,
