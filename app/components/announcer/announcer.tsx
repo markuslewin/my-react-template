@@ -1,4 +1,4 @@
-import { useAnnouncer } from "#app/components/announcer/use-announcer";
+import { useAnnouncer } from "#app/components/announcer";
 
 export function Announcer() {
   const { announcements } = useAnnouncer();

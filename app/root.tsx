@@ -19,7 +19,7 @@ import {
   action as nestedRoutesUpdateAction,
   handle as nestedRoutesUpdateHandle,
 } from "#app/routes/nested-routes.update.$id";
-import { AnnouncementProvider } from "#app/components/announcer/announcement-provider";
+import { AnnouncementProvider } from "#app/components/announcer";
 
 const router = createBrowserRouter([
   {
