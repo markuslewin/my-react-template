@@ -17,7 +17,7 @@
     "test": "vitest",
     "test:e2e": "playwright test",
     "test:e2e:dev": "playwright test --ui",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
