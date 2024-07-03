@@ -1,9 +1,28 @@
 import { screens } from "./app/utils/screens";
 import { clickable } from "./tailwind/clickable";
 import { hocus } from "./tailwind/hocus";
-import { rem } from "./tailwind/rem";
+// import { rem } from "./tailwind/rem";
 import { shape } from "./tailwind/shape";
 import { center } from "./tailwind/center";
+import { calculateClamps } from "utopia-core";
+import { invariant } from "@epic-web/invariant";
+
+const clamps = calculateClamps({
+  minWidth: 375,
+  maxWidth: 1110,
+  pairs: [
+    [32, 48],
+    [24, 39],
+    [16, 20],
+  ],
+});
+
+function getClamp(step) {
+  const info = clamps[step];
+  invariant(info !== undefined, `Couldn't find clamp at step ${step}`);
+
+  return info.clamp;
+}
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -47,9 +66,9 @@ export default {
     },
     fontSize: {
       // todo: Add font sizes
-      "heading-l": [rem(48), { fontWeight: 500, lineHeight: rem(48) }],
-      "heading-m": [rem(39), { fontWeight: 500, lineHeight: rem(39) }],
-      body: [rem(20), { lineHeight: rem(24) }],
+      "heading-l": [getClamp(0), { fontWeight: 500, lineHeight: 1 }],
+      "heading-m": [getClamp(1), { fontWeight: 500, lineHeight: 1 }],
+      body: [getClamp(2), { lineHeight: 1.2 }],
     },
     extend: {},
   },
