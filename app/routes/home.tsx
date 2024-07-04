@@ -12,7 +12,9 @@ import { Input } from '#app/components/input'
 import * as Landmark from '#app/components/landmark'
 import { Picture, Source, Image } from '#app/components/picture'
 import { type AnnouncementHandle } from '#app/components/route-announcer'
+import { clientEnv } from '#app/utils/env/client'
 import { screens } from '#app/utils/screens'
+import { invariant } from '@epic-web/invariant'
 
 export const handle = {
 	announcement() {
@@ -27,14 +29,13 @@ const FavoriteColorSchema = z.object({
 			message: 'Color must be "blue"',
 		}),
 })
-
 export function Home() {
 	return (
 		<>
 			<h1 className="text-heading-l">My React template</h1>
 			<p className="mt-8">This is my React template.</p>
-			<h2 className="mt-24 text-heading-m">Node environment</h2>
-			<NodeEnvironment />
+			<h2 className="mt-24 text-heading-m">Environment variables</h2>
+			<EnvVariables />
 			<h2 className="mt-24 text-heading-m">Form validation</h2>
 			<FormValidation />
 			<h2 className="mt-24 text-heading-m">Optimized image</h2>
@@ -49,12 +50,16 @@ export function Home() {
 	)
 }
 
-function NodeEnvironment() {
+function EnvVariables() {
 	return (
-		<p className="mt-8">
-			The current node environment is:{' '}
-			<strong data-testid="node-env">{process.env.NODE_ENV}</strong>.
-		</p>
+		<div className="mt-8 grid gap-8">
+			<p>
+				The current node environment is:{' '}
+				<strong data-testid="node-env">{process.env.NODE_ENV}</strong>.
+			</p>
+			<p>Environment variables for the client:</p>
+			<pre>{JSON.stringify(clientEnv, undefined, '\t')}</pre>
+		</div>
 	)
 }
 
@@ -123,18 +128,39 @@ function OptimizedImage() {
 	)
 }
 
+const apiResponseSchema = z.object({
+	input: z.string(),
+	message: z.string(),
+	country: z
+		.object({
+			code: z.string().optional(),
+			name: z.string().optional(),
+		})
+		.optional(),
+})
+
+type ApiResponse = z.infer<typeof apiResponseSchema>
+
 function ApiEndpoint() {
-	const [message, setMessage] = useState<string | null>(null)
+	const [apiResponse, setApiResponse] = useState<ApiResponse | null>(null)
 
 	useEffect(() => {
 		let ignore = false
-		fetch('/.netlify/functions/message')
-			.then((response) => response.text())
-			.then((text) => {
-				if (ignore) return
+		const body = new FormData()
+		body.set('input', 'Some data')
 
-				setMessage(text)
-			})
+		fetch('/.netlify/functions/message', {
+			method: 'post',
+			body,
+		}).then(async (response) => {
+			invariant(response.ok, `Invalid status code ${response.status}`)
+
+			const json = await response.json()
+			if (ignore) return
+
+			const result = apiResponseSchema.parse(json)
+			setApiResponse(result)
+		})
 		return () => {
 			ignore = true
 		}
@@ -144,7 +170,9 @@ function ApiEndpoint() {
 		<>
 			<p className="mt-8">The server says:</p>
 			<pre className="mt-4" data-testid="server-message">
-				{message === null ? 'Loading...' : message}
+				{apiResponse === null
+					? 'Loading...'
+					: JSON.stringify(apiResponse, undefined, '\t')}
 			</pre>
 		</>
 	)
