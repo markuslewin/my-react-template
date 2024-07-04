@@ -20,6 +20,7 @@ import {
 	action as nestedRoutesUpdateAction,
 	handle as nestedRoutesUpdateHandle,
 } from '#app/routes/nested-routes.update.$id'
+import { action as messageAction } from '#app/utils/message.js'
 
 const router = createBrowserRouter([
 	{
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
 				index: true,
 				handle: homeHandle,
 				Component: Home,
+			},
+			{
+				path: 'message',
+				action: messageAction,
 			},
 			{
 				path: 'nested-routes',

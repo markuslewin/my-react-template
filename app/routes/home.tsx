@@ -1,6 +1,6 @@
 import { getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { z } from 'zod'
 // @ts-expect-error Search params
@@ -13,8 +13,8 @@ import * as Landmark from '#app/components/landmark'
 import { Picture, Source, Image } from '#app/components/picture'
 import { type AnnouncementHandle } from '#app/components/route-announcer'
 import { clientEnv } from '#app/utils/env/client'
+import { useSubmitInput } from '#app/utils/message.js'
 import { screens } from '#app/utils/screens'
-import { invariant } from '@epic-web/invariant'
 
 export const handle = {
 	announcement() {
@@ -128,51 +128,26 @@ function OptimizedImage() {
 	)
 }
 
-const apiResponseSchema = z.object({
-	input: z.string(),
-	message: z.string(),
-	country: z
-		.object({
-			code: z.string().optional(),
-			name: z.string().optional(),
-		})
-		.optional(),
-})
-
-type ApiResponse = z.infer<typeof apiResponseSchema>
-
 function ApiEndpoint() {
-	const [apiResponse, setApiResponse] = useState<ApiResponse | null>(null)
-
-	useEffect(() => {
-		let ignore = false
-		const body = new FormData()
-		body.set('input', 'Some data')
-
-		fetch('/.netlify/functions/message', {
-			method: 'post',
-			body,
-		}).then(async (response) => {
-			invariant(response.ok, `Invalid status code ${response.status}`)
-
-			const json = await response.json()
-			if (ignore) return
-
-			const result = apiResponseSchema.parse(json)
-			setApiResponse(result)
-		})
-		return () => {
-			ignore = true
-		}
-	}, [])
+	const { fetcher, submit } = useSubmitInput()
 
 	return (
 		<>
-			<p className="mt-8">The server says:</p>
+			<p className="mt-8">
+				<Button
+					type="button"
+					aria-disabled={fetcher.state !== 'idle'}
+					onClick={() => {
+						submit({ input: 'Some data' })
+					}}
+				>
+					Post to serverless function
+				</Button>
+			</p>
 			<pre className="mt-4" data-testid="server-message">
-				{apiResponse === null
-					? 'Loading...'
-					: JSON.stringify(apiResponse, undefined, '\t')}
+				{fetcher.data === undefined
+					? 'Data will be displayed here.'
+					: JSON.stringify(fetcher.data, undefined, '\t')}
 			</pre>
 		</>
 	)
