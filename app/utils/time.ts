@@ -2,9 +2,8 @@ import { invariant } from '@epic-web/invariant'
 import { faker } from '@faker-js/faker'
 import { delay, http, HttpResponse } from 'msw'
 import { z } from 'zod'
-import { sleep } from '#app/utils/sleep'
 
-const urls = {
+export const urls = {
 	ip: 'https://worldtimeapi.org/api/ip',
 }
 
@@ -20,8 +19,6 @@ const timeResponseSchema = z.object({
 export type TimeResponse = z.infer<typeof timeResponseSchema>
 
 export async function getTime() {
-	await sleep(3000)
-
 	const response = await fetch(urls.ip)
 	invariant(response.ok, `Invalid status code ${response.status}`)
 

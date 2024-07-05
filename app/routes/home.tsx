@@ -89,10 +89,6 @@ function TimeError() {
 function EnvVariables() {
 	return (
 		<div className="mt-8 grid gap-8">
-			<p>
-				The current node environment is:{' '}
-				<strong data-testid="node-env">{process.env.NODE_ENV}</strong>.
-			</p>
 			<p>Environment variables for the client:</p>
 			<pre>{JSON.stringify(clientEnv, undefined, '\t')}</pre>
 		</div>

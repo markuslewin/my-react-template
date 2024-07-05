@@ -77,7 +77,8 @@ export default defineConfig({
 		url: `http://localhost:${PORT}`,
 		reuseExistingServer: !process.env.CI,
 		env: {
-			NODE_ENV: 'test',
+			// Use `page.route` to [mock APIs](https://playwright.dev/docs/mock) with Playwright
+			VITE_MOCKS: 'false',
 		},
 	},
 })
