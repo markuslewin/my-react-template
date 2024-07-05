@@ -1,7 +1,13 @@
 import { getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
-import { useRef, useState } from 'react'
+import { Suspense, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
+import {
+	Await,
+	useAsyncError,
+	useAsyncValue,
+	useLoaderData,
+} from 'react-router-dom'
 import { z } from 'zod'
 // @ts-expect-error Search params
 import mobileImg from '#app/assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=300&as=metadata'
@@ -13,8 +19,9 @@ import * as Landmark from '#app/components/landmark'
 import { Picture, Source, Image } from '#app/components/picture'
 import { type AnnouncementHandle } from '#app/components/route-announcer'
 import { clientEnv } from '#app/utils/env/client'
-import { useSubmitInput } from '#app/utils/message.js'
+import { useSubmitInput } from '#app/utils/message'
 import { screens } from '#app/utils/screens'
+import { type TimeResponse } from '#app/utils/time'
 
 export const handle = {
 	announcement() {
@@ -29,11 +36,14 @@ const FavoriteColorSchema = z.object({
 			message: 'Color must be "blue"',
 		}),
 })
+
 export function Home() {
 	return (
 		<>
 			<h1 className="text-heading-l">My React template</h1>
 			<p className="mt-8">This is my React template.</p>
+			<h2 className="mt-24 text-heading-m">Mocked API</h2>
+			<MockedApi />
 			<h2 className="mt-24 text-heading-m">Environment variables</h2>
 			<EnvVariables />
 			<h2 className="mt-24 text-heading-m">Form validation</h2>
@@ -48,6 +58,32 @@ export function Home() {
 			</Landmark.Root>
 		</>
 	)
+}
+
+function MockedApi() {
+	const data = useLoaderData() as { time: TimeResponse }
+
+	return (
+		<div className="mt-8">
+			<Suspense fallback={<pre>Loading time data...</pre>}>
+				<Await resolve={data.time} errorElement={<TimeError />}>
+					<TimeResolve />
+				</Await>
+			</Suspense>
+		</div>
+	)
+}
+
+function TimeResolve() {
+	const time = useAsyncValue()
+
+	return <pre>{JSON.stringify(time, undefined, '\t')}</pre>
+}
+
+function TimeError() {
+	const error = useAsyncError()
+
+	return <pre>{JSON.stringify(error, undefined, '\t')}</pre>
 }
 
 function EnvVariables() {
