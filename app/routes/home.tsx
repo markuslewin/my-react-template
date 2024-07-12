@@ -20,7 +20,7 @@ import { Picture, Source, Image } from '#app/components/picture'
 import { type AnnouncementHandle } from '#app/components/route-announcer'
 import { clientEnv } from '#app/utils/env/client'
 import { useSubmitInput } from '#app/utils/message'
-import { screens } from '#app/utils/screens'
+import { media } from '#app/utils/screens'
 import { type TimeResponse } from '#app/utils/time'
 
 export const handle = {
@@ -149,7 +149,7 @@ function OptimizedImage() {
 				is <strong>163 kB</strong>.
 			</p>
 			<Picture>
-				<Source media={`(min-width: ${screens.tablet})`} image={tabletImg} />
+				<Source media={media.tablet} image={tabletImg} />
 				<Image
 					className="mt-6 w-full bg-[hsl(189_90%_31%)]"
 					alt="The optimized image"

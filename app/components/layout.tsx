@@ -9,12 +9,12 @@ import {
 } from 'react-router-dom'
 import { Announcer } from '#app/components/announcer'
 import { RouteAnnouncer } from '#app/components/route-announcer'
-import { screens } from '#app/utils/screens'
+import { media } from '#app/utils/screens'
 import { useTheme } from '#app/utils/theme'
 
 export function Layout() {
 	const { theme, setTheme } = useTheme()
-	const tabletMatches = useMediaQuery(`(min-width: ${screens.tablet})`)
+	const tabletMatches = useMediaQuery(media.tablet)
 
 	const nextTheme = theme === 'dark' ? 'light' : 'dark'
 
