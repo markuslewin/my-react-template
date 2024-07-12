@@ -1,37 +1,9 @@
 import { getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
-import {
-	type ActionFunctionArgs,
-	Form,
-	redirect,
-	useActionData,
-} from 'react-router-dom'
-import { z } from 'zod'
+import { Form, useActionData } from 'react-router-dom'
 import { Button } from '#app/components/button'
 import { Input } from '#app/components/input'
-import { type AnnouncementHandle } from '#app/components/route-announcer'
-import { createMessage } from '#app/utils/messages'
-
-const AddMessageSchema = z.object({
-	text: z.string(),
-})
-
-export const handle = {
-	announcement() {
-		return 'Add a message'
-	},
-} satisfies AnnouncementHandle
-
-export async function action({ request }: ActionFunctionArgs) {
-	const formData = await request.formData()
-
-	const result = parseWithZod(formData, { schema: AddMessageSchema })
-	if (result.status !== 'success') return result.reply()
-
-	createMessage(result.value)
-
-	return redirect('/nested-routes')
-}
+import { AddMessageSchema } from '#app/routes/nested-routes.create/routing'
 
 export function NestedRoutesCreate() {
 	const lastResult = useActionData() as any

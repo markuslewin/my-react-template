@@ -17,17 +17,10 @@ import { Button } from '#app/components/button'
 import { Input } from '#app/components/input'
 import * as Landmark from '#app/components/landmark'
 import { Picture, Source, Image } from '#app/components/picture'
-import { type AnnouncementHandle } from '#app/components/route-announcer'
 import { clientEnv } from '#app/utils/env/client'
 import { useSubmitInput } from '#app/utils/message'
 import { media } from '#app/utils/screens'
 import { type TimeResponse } from '#app/utils/time'
-
-export const handle = {
-	announcement() {
-		return 'Home'
-	},
-} satisfies AnnouncementHandle
 
 const FavoriteColorSchema = z.object({
 	color: z

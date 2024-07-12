@@ -4,7 +4,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
 	{
-		ignores: ['.netlify/'],
+		ignores: ['.netlify/', 'public/mockServiceWorker.js'],
 	},
 	...defaultConfig,
 	{

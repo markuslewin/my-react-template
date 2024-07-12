@@ -4,25 +4,26 @@ import '#app/index.css'
 import { RouterProvider, createBrowserRouter, defer } from 'react-router-dom'
 import { AnnouncementProvider } from '#app/components/announcer'
 import { Layout } from '#app/components/layout'
-import { Home, handle as homeHandle } from '#app/routes/home'
-import { NestedRoutes } from '#app/routes/nested-routes'
+import { Home } from '#app/routes/home/route'
+import { handle as homeHandle } from '#app/routes/home/routing'
+import { NestedRoutes } from '#app/routes/nested-routes/route'
+import { NestedRoutesIndex } from '#app/routes/nested-routes._index/route'
 import {
-	NestedRoutesCreate,
-	handle as nestedRoutesCreateHandle,
-	action as nestedRoutesCreateAction,
-} from '#app/routes/nested-routes.create'
-import {
-	NestedRoutesIndex,
 	handle as nestedRoutesIndexHandle,
 	action as nestedRoutesIndexAction,
 	loader as nestedRoutesIndexLoader,
-} from '#app/routes/nested-routes.index'
+} from '#app/routes/nested-routes._index/routing'
+import { NestedRoutesCreate } from '#app/routes/nested-routes.create/route'
 import {
-	NestedRoutesUpdate,
+	handle as nestedRoutesCreateHandle,
+	action as nestedRoutesCreateAction,
+} from '#app/routes/nested-routes.create/routing'
+import { NestedRoutesUpdate } from '#app/routes/nested-routes.update.$id/route'
+import {
 	loader as nestedRoutesUpdateLoader,
 	action as nestedRoutesUpdateAction,
 	handle as nestedRoutesUpdateHandle,
-} from '#app/routes/nested-routes.update.$id'
+} from '#app/routes/nested-routes.update.$id/routing'
 import { clientEnv } from '#app/utils/env/client'
 import { action as messageAction } from '#app/utils/message'
 import { getTime } from '#app/utils/time'

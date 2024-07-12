@@ -1,45 +1,11 @@
 import { getFormProps, getInputProps, useForm } from '@conform-to/react'
-import { getZodConstraint, parseWithZod } from '@conform-to/zod'
-import {
-	type ActionFunctionArgs,
-	Form,
-	Link,
-	redirect,
-	useLoaderData,
-} from 'react-router-dom'
-import { z } from 'zod'
+import { getZodConstraint } from '@conform-to/zod'
+import { Form, Link, useLoaderData } from 'react-router-dom'
 import { Icon } from '#app/components/icon'
-import { type AnnouncementHandle } from '#app/components/route-announcer'
-import { getMessages, deleteMessage } from '#app/utils/messages'
-
-const DeleteMessageSchema = z.object({
-	id: z.string(),
-})
-
-export const handle = {
-	announcement() {
-		return 'Messages'
-	},
-} satisfies AnnouncementHandle
-
-export function loader() {
-	const messages = getMessages() ?? []
-
-	return {
-		messages,
-	}
-}
-
-export async function action({ request }: ActionFunctionArgs) {
-	const formData = await request.formData()
-
-	const result = parseWithZod(formData, { schema: DeleteMessageSchema })
-	if (result.status !== 'success') return result.reply()
-
-	deleteMessage(result.value.id)
-
-	return redirect('/nested-routes')
-}
+import {
+	DeleteMessageSchema,
+	type loader,
+} from '#app/routes/nested-routes._index/routing'
 
 export function NestedRoutesIndex() {
 	const { messages } = useLoaderData() as ReturnType<typeof loader>
