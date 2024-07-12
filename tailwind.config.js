@@ -10,6 +10,7 @@ import { shape } from './tailwind/shape'
 const clamps = calculateClamps({
 	minWidth: 375,
 	maxWidth: 1110,
+	// todo: Add type scale
 	pairs: [
 		[32, 48],
 		[24, 39],

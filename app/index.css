@@ -32,6 +32,9 @@
 		--delete-foreground-hocus: var(--color-red-200);
 		--error-foreground: var(--color-red-500);
 
+		-moz-text-size-adjust: none;
+		-webkit-text-size-adjust: none;
+		text-size-adjust: none;
 		color-scheme: light;
 	}
 
@@ -52,14 +55,21 @@
 		@apply bg-background font-base text-body text-foreground;
 	}
 
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		text-wrap: balance;
+	}
+
 	:focus {
 		outline-offset: 0.25rem;
 	}
 }
 
 @layer components {
-	/* Components here */
-
 	.menu__overlay {
 		@apply bg-overlay/85;
 
