@@ -22,6 +22,7 @@ locally.
 
 ```bash
 cd $PROJECT_NAME
+cp .env.example .env
 npm i
 npm run dev
 ```
