@@ -29,8 +29,9 @@ import { action as messageAction } from '#app/utils/message'
 import { getTime } from '#app/utils/time'
 
 async function enableMocking() {
-	if (clientEnv.VITE_MOCKS) {
-		const { worker } = await import('#app/mocks')
+	// Tree shake mocks when building for production
+	if (!import.meta.env.PROD && clientEnv.VITE_MOCKS) {
+		const { worker } = await import('#tests/mocks')
 		return worker.start()
 	}
 }

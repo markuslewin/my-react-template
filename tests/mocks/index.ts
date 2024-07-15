@@ -1,6 +1,6 @@
 import { http, passthrough } from 'msw'
 import { setupWorker } from 'msw/browser'
-import { handlers as worldtimeapiHandlers } from '#app/utils/time'
+import { handlers as worldtimeapiHandlers } from '#tests/mocks/worldtimeapi'
 
 export const worker = setupWorker(
 	...worldtimeapiHandlers,

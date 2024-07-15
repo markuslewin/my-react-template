@@ -1,8 +1,6 @@
 import { test, expect } from '@playwright/test'
-import {
-	createMockResponse as createWorldtimeapiResponse,
-	urls as worldtimeapiUrls,
-} from '#app/utils/time'
+import { urls as worldtimeapiUrls } from '#app/utils/time'
+import { createMockResponse as createWorldtimeapiResponse } from '#tests/mocks/worldtimeapi.js'
 
 test.beforeEach(async ({ context }) => {
 	// Append * to include requests containing search params
