@@ -142,11 +142,14 @@ function OptimizedImage() {
 				is <strong>163 kB</strong>.
 			</p>
 			<Picture>
-				<Source media={media.tablet} image={tabletImg} />
+				<Source
+					media={media.tablet}
+					images={[{ metadata: tabletImg, density: '1x' }]}
+				/>
 				<Img
 					className="mt-6 w-full bg-[hsl(189_90%_31%)]"
 					alt="The optimized image"
-					image={mobileImg}
+					images={[{ metadata: mobileImg, density: '1x' }]}
 				/>
 			</Picture>
 		</>
