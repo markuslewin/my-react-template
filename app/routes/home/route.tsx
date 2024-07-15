@@ -1,5 +1,6 @@
 import { getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
+import { useMediaQuery } from '@uidotdev/usehooks'
 import { Suspense, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import {
@@ -9,10 +10,7 @@ import {
 	useLoaderData,
 } from 'react-router-dom'
 import { z } from 'zod'
-// @ts-expect-error Search params
-import mobileImg from '#app/assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=300&as=metadata'
-// @ts-expect-error Search params
-import tabletImg from '#app/assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=webp&w=768&as=metadata'
+import { getAsset } from '#app/assets'
 import { Button } from '#app/components/button'
 import { Input } from '#app/components/input'
 import * as Landmark from '#app/components/landmark'
@@ -41,8 +39,8 @@ export function Home() {
 			<EnvVariables />
 			<h2 className="mt-24 text-heading-m">Form validation</h2>
 			<FormValidation />
-			<h2 className="mt-24 text-heading-m">Optimized image</h2>
-			<OptimizedImage />
+			<h2 className="mt-24 text-heading-m">Picture component</h2>
+			<PictureComponent />
 			<Landmark.Root>
 				<Landmark.Label>
 					<h2 className="mt-24 text-heading-m">API endpoint</h2>
@@ -134,22 +132,30 @@ function FormValidation() {
 	)
 }
 
-function OptimizedImage() {
+function PictureComponent() {
+	const tabletMatches = useMediaQuery(media.tablet)
+
 	return (
 		<>
-			<p className="mt-8">
-				The original image was <strong>3.5 MB</strong>, but the following image
-				is <strong>163 kB</strong>.
-			</p>
 			<Picture>
 				<Source
 					media={media.tablet}
-					images={[{ metadata: tabletImg, density: '1x' }]}
+					images={[
+						{
+							metadata: getAsset('/flower.jpg'),
+							density: '1x',
+						},
+					]}
 				/>
 				<Img
 					className="mt-6 w-full bg-[hsl(189_90%_31%)]"
-					alt="The optimized image"
-					images={[{ metadata: mobileImg, density: '1x' }]}
+					alt={tabletMatches ? 'Flower' : 'Coffee'}
+					images={[
+						{
+							metadata: getAsset('/coffee.jpg'),
+							density: '1x',
+						},
+					]}
 				/>
 			</Picture>
 		</>
