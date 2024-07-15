@@ -4,7 +4,7 @@ import {
 	type SourceHTMLAttributes,
 } from 'react'
 
-export interface Image {
+export interface Img {
 	src: string
 	width: number
 	height: number
@@ -17,7 +17,7 @@ export function Picture(props: PictureProps) {
 }
 
 export interface SourceProps extends SourceHTMLAttributes<HTMLSourceElement> {
-	image: Image
+	image: Img
 }
 
 export function Source({ image, ...props }: SourceProps) {
@@ -31,13 +31,13 @@ export function Source({ image, ...props }: SourceProps) {
 	)
 }
 
-export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+export interface ImgProps extends ImgHTMLAttributes<HTMLImageElement> {
 	alt: string
-	image: Image
+	image: Img
 	priority?: boolean
 }
 
-export function Image({ image, priority, ...props }: ImageProps) {
+export function Img({ image, priority, ...props }: ImgProps) {
 	return (
 		<img
 			src={image.src}

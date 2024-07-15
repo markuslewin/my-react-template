@@ -16,7 +16,7 @@ import tabletImg from '#app/assets/nattu-adnan-vvHRdOwqHcg-unsplash.jpg?format=w
 import { Button } from '#app/components/button'
 import { Input } from '#app/components/input'
 import * as Landmark from '#app/components/landmark'
-import { Picture, Source, Image } from '#app/components/picture'
+import { Picture, Source, Img } from '#app/components/picture'
 import { clientEnv } from '#app/utils/env/client'
 import { useSubmitInput } from '#app/utils/message'
 import { media } from '#app/utils/screens'
@@ -143,7 +143,7 @@ function OptimizedImage() {
 			</p>
 			<Picture>
 				<Source media={media.tablet} image={tabletImg} />
-				<Image
+				<Img
 					className="mt-6 w-full bg-[hsl(189_90%_31%)]"
 					alt="The optimized image"
 					image={mobileImg}
