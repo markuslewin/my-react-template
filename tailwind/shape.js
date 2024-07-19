@@ -1,7 +1,12 @@
 import plugin from 'tailwindcss/plugin'
 
 const defaultWidth = '1px'
+
 const borderWidth = `var(--shape-border-width, ${defaultWidth})`
+const common = {
+	borderWidth,
+	borderColor: 'var(--shape-color, transparent)',
+}
 
 function getPadding(size) {
 	return `calc(${size} - ${borderWidth})`
@@ -14,26 +19,27 @@ export const shape = plugin(({ matchUtilities, theme }) => {
 			'shape-p': (size) => {
 				return {
 					padding: getPadding(size),
-					borderWidth,
+					...common,
 				}
 			},
 			'shape-py': (size) => {
 				return {
 					'padding-top': getPadding(size),
 					'padding-bottom': getPadding(size),
-					borderWidth,
+					...common,
 				}
 			},
 			'shape-px': (size) => {
 				return {
 					'padding-left': getPadding(size),
 					'padding-right': getPadding(size),
-					borderWidth,
+					...common,
 				}
 			},
 		},
 		{ values: theme('size') },
 	)
+
 	matchUtilities(
 		{
 			'shape-border': (borderWidth) => {
@@ -43,5 +49,16 @@ export const shape = plugin(({ matchUtilities, theme }) => {
 			},
 		},
 		{ values: theme('borderWidth') },
+	)
+
+	matchUtilities(
+		{
+			'shape-color': (borderColor) => {
+				return {
+					'--shape-color': borderColor,
+				}
+			},
+		},
+		{ values: theme('borderColor') },
 	)
 })
