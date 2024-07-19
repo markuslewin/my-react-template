@@ -1,10 +1,11 @@
 import plugin from 'tailwindcss/plugin'
 
-function getPadding(size) {
-	return `calc(${size} - var(--shape-border-width, 0px))`
-}
+const defaultWidth = '1px'
+const borderWidth = `var(--shape-border-width, ${defaultWidth})`
 
-const borderWidth = 'var(--shape-border-width)'
+function getPadding(size) {
+	return `calc(${size} - ${borderWidth})`
+}
 
 // Draws outlines for borderless shapes during forced-colors
 export const shape = plugin(({ matchUtilities, theme }) => {
