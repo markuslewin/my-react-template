@@ -36,6 +36,30 @@ export const shape = plugin(({ matchUtilities, theme }) => {
 					...common,
 				}
 			},
+			'shape-pt': (size) => {
+				return {
+					'padding-top': getPadding(size),
+					...common,
+				}
+			},
+			'shape-pr': (size) => {
+				return {
+					'padding-right': getPadding(size),
+					...common,
+				}
+			},
+			'shape-pb': (size) => {
+				return {
+					'padding-bottom': getPadding(size),
+					...common,
+				}
+			},
+			'shape-pl': (size) => {
+				return {
+					'padding-left': getPadding(size),
+					...common,
+				}
+			},
 		},
 		{ values: theme('size') },
 	)
