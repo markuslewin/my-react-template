@@ -44,6 +44,7 @@ export function useSubmitInput() {
 		fetcher.submit(body, {
 			method: 'post',
 			action: '/message',
+			preventScrollReset: true,
 		})
 	}
 
