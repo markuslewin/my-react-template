@@ -71,7 +71,11 @@ export default {
 			'heading-m': [getClamp(1), { fontWeight: 500, lineHeight: 1 }],
 			body: [getClamp(2), { lineHeight: 1.2 }],
 		},
-		extend: {},
+		extend: {
+			aria: {
+				invalid: 'invalid="true"',
+			},
+		},
 	},
 	plugins: [hocus, shape, clickable, center],
 }
