@@ -1,17 +1,12 @@
-import {
-	type ComponentPropsWithoutRef,
-	type HTMLAttributes,
-	type ImgHTMLAttributes,
-	type SourceHTMLAttributes,
-} from 'react'
+import { type ComponentPropsWithoutRef } from 'react'
 
-export interface PictureProps extends HTMLAttributes<HTMLPictureElement> {}
+export interface PictureProps extends ComponentPropsWithoutRef<'picture'> {}
 
 export function Picture(props: PictureProps) {
 	return <picture {...props} />
 }
 
-export interface SourceProps extends SourceHTMLAttributes<HTMLSourceElement> {
+export interface SourceProps extends ComponentPropsWithoutRef<'source'> {
 	images?: [Image, ...Image[]]
 }
 
@@ -33,7 +28,7 @@ function getSourceProps(
 	}
 }
 
-export interface ImgProps extends ImgHTMLAttributes<HTMLImageElement> {
+export interface ImgProps extends ComponentPropsWithoutRef<'img'> {
 	alt: string
 	images?: [Image, ...Image[]]
 	priority?: boolean
@@ -77,7 +72,7 @@ function getImagesProps(images: ImgProps['images']) {
 
 function getSrcSetProp(
 	images: Image[],
-): Pick<ImgHTMLAttributes<HTMLImageElement>, 'srcSet'> {
+): Pick<ComponentPropsWithoutRef<'img'>, 'srcSet'> {
 	if (images.length <= 1) {
 		return {}
 	} else {

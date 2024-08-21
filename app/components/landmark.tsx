@@ -1,7 +1,7 @@
 import { invariant } from '@epic-web/invariant'
 import { Slot } from '@radix-ui/react-slot'
 import {
-	type HTMLAttributes,
+	type ComponentPropsWithoutRef,
 	type ReactNode,
 	createContext,
 	useContext,
@@ -17,7 +17,7 @@ function useLandmarkContext() {
 	return value
 }
 
-interface RootProps extends HTMLAttributes<HTMLElement> {}
+interface RootProps extends ComponentPropsWithoutRef<'section'> {}
 
 export function Root(props: RootProps) {
 	const headingId = useId()
