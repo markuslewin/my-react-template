@@ -1,3 +1,4 @@
+import AxeBuilder from '@axe-core/playwright'
 import { test, expect } from '@playwright/test'
 import { urls as worldtimeapiUrls } from '#app/utils/time'
 import { createMockResponse as createWorldtimeapiResponse } from '#tests/mocks/worldtimeapi.js'
@@ -36,4 +37,31 @@ test('has api endpoint landmark', async ({ page }) => {
 	await expect(
 		page.getByRole('region', { name: 'api endpoint' }),
 	).toBeAttached()
+})
+
+test.describe('passes a11y checks', () => {
+	test('home', async ({ page }) => {
+		await page.goto('/')
+
+		const results = await new AxeBuilder({ page }).analyze()
+		expect(results.violations).toEqual([])
+	})
+
+	test('nested routes', async ({ page }) => {
+		await page.goto('/nested-routes')
+
+		let results = await new AxeBuilder({ page }).analyze()
+		expect(results.violations).toEqual([])
+
+		await page.getByRole('link', { name: 'add' }).click()
+
+		results = await new AxeBuilder({ page }).analyze()
+		expect(results.violations).toEqual([])
+
+		await page.getByRole('link', { name: 'messages' }).click()
+		await page.getByRole('link', { name: 'one' }).click()
+
+		results = await new AxeBuilder({ page }).analyze()
+		expect(results.violations).toEqual([])
+	})
 })
