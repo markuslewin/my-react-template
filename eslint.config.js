@@ -1,7 +1,7 @@
 import { config as defaultConfig } from '@epic-web/config/eslint'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
+/** @type {import('eslint').Linter.Config[]} */
 export default [
 	{
 		ignores: ['.netlify/', 'public/mockServiceWorker.js'],
