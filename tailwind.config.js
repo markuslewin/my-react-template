@@ -3,8 +3,10 @@ import { center } from './tailwind/center'
 import { clamp } from './tailwind/clamp'
 import { clickable } from './tailwind/clickable'
 import { hocus } from './tailwind/hocus'
+import { layer } from './tailwind/layer'
 // import { rem } from "./tailwind/rem";
 import { shape } from './tailwind/shape'
+import { theGrid } from './tailwind/the-grid'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -58,5 +60,5 @@ export default {
 			},
 		},
 	},
-	plugins: [hocus, shape, clickable, center],
+	plugins: [center, clickable, hocus, layer, shape, theGrid],
 }
