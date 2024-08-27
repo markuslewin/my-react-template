@@ -1,3 +1,5 @@
+import colors from 'tailwindcss/colors'
+import defaultTheme from 'tailwindcss/defaultTheme'
 import { screens } from './app/utils/screens'
 import { center } from './tailwind/center'
 import { clamp } from './tailwind/clamp'
@@ -15,6 +17,7 @@ export default {
 	theme: {
 		screens,
 		colors: {
+			transparent: colors.transparent,
 			// todo: Add colors
 			background: 'hsl(var(--background))',
 			foreground: 'hsl(var(--foreground))',
@@ -53,6 +56,10 @@ export default {
 			'heading-l': [clamp(32, 48), { fontWeight: 500, lineHeight: 1 }],
 			'heading-m': [clamp(24, 39), { fontWeight: 500, lineHeight: 1 }],
 			body: [clamp(16, 20), { lineHeight: 1.2 }],
+		},
+		borderRadius: {
+			xl: defaultTheme.borderRadius.xl,
+			full: defaultTheme.borderRadius.full,
 		},
 		extend: {
 			aria: {
