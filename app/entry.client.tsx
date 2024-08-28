@@ -38,7 +38,7 @@ async function enableMocking() {
 	}
 }
 
-enableMocking().then(() => {
+void enableMocking().then(() => {
 	const router = createBrowserRouter([
 		{
 			path: '/',
