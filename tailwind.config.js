@@ -58,6 +58,7 @@ export default {
 			body: [clamp(16, 20), { lineHeight: 1.2 }],
 		},
 		borderRadius: {
+			inherit: 'inherit',
 			xl: defaultTheme.borderRadius.xl,
 			full: defaultTheme.borderRadius.full,
 		},
