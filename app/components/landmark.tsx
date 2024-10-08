@@ -20,12 +20,12 @@ function useLandmarkContext() {
 
 interface RootProps extends ComponentPropsWithoutRef<'section'> {}
 
-export const Root = forwardRef<HTMLElement, RootProps>((props) => {
+export const Root = forwardRef<HTMLElement, RootProps>((props, ref) => {
 	const headingId = useId()
 
 	return (
 		<context.Provider value={{ headingId }}>
-			<section aria-labelledby={headingId} {...props} />
+			<section ref={ref} aria-labelledby={headingId} {...props} />
 		</context.Provider>
 	)
 })
@@ -34,8 +34,14 @@ interface LabelProps {
 	children: ReactNode
 }
 
-export const Label = forwardRef<HTMLElement, LabelProps>(({ children }) => {
-	const { headingId } = useLandmarkContext()
+export const Label = forwardRef<HTMLElement, LabelProps>(
+	({ children }, ref) => {
+		const { headingId } = useLandmarkContext()
 
-	return <Slot id={headingId}>{children}</Slot>
-})
+		return (
+			<Slot ref={ref} id={headingId}>
+				{children}
+			</Slot>
+		)
+	},
+)
