@@ -1,7 +1,7 @@
 import { getFormProps, getInputProps, useForm } from '@conform-to/react'
 import { getZodConstraint, parseWithZod } from '@conform-to/zod'
 import { useMediaQuery } from '@uidotdev/usehooks'
-import { Suspense, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import {
 	Await,
@@ -47,6 +47,8 @@ export function Home() {
 				</Landmark.Label>
 				<ApiEndpoint />
 			</Landmark.Root>
+			<h2 className="mt-24 text-heading-m">Timer</h2>
+			<Timer />
 		</>
 	)
 }
@@ -184,5 +186,39 @@ function ApiEndpoint() {
 					: JSON.stringify(fetcher.data, undefined, '\t')}
 			</pre>
 		</>
+	)
+}
+
+const initialLeft = 10_000
+const startTime = new Date().getTime()
+
+function Timer() {
+	const [left, setLeft] = useState(initialLeft)
+
+	useEffect(() => {
+		const id = setInterval(() => {
+			const now = new Date().getTime()
+			const nextLeft = Math.max(0, initialLeft - (now - startTime))
+			setLeft(nextLeft)
+			if (nextLeft === 0) {
+				clearInterval(id)
+			}
+		}, 100)
+		return () => {
+			clearInterval(id)
+		}
+	}, [])
+
+	return (
+		<p className="mt-8" data-testid="timer">
+			{left <= 0 ? (
+				<>Time's up!</>
+			) : (
+				<>
+					Time left: <span data-testid="left">{Math.ceil(left / 1000)}</span>{' '}
+					seconds.
+				</>
+			)}
+		</p>
 	)
 }
