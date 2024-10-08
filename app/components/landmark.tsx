@@ -4,6 +4,7 @@ import {
 	type ComponentPropsWithoutRef,
 	type ReactNode,
 	createContext,
+	forwardRef,
 	useContext,
 	useId,
 } from 'react'
@@ -19,7 +20,7 @@ function useLandmarkContext() {
 
 interface RootProps extends ComponentPropsWithoutRef<'section'> {}
 
-export function Root(props: RootProps) {
+export const Root = forwardRef<HTMLElement, RootProps>((props) => {
 	const headingId = useId()
 
 	return (
@@ -27,14 +28,14 @@ export function Root(props: RootProps) {
 			<section aria-labelledby={headingId} {...props} />
 		</context.Provider>
 	)
-}
+})
 
 interface LabelProps {
 	children: ReactNode
 }
 
-export function Label({ children }: LabelProps) {
+export const Label = forwardRef<HTMLElement, LabelProps>(({ children }) => {
 	const { headingId } = useLandmarkContext()
 
 	return <Slot id={headingId}>{children}</Slot>
-}
+})

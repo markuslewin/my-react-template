@@ -1,18 +1,22 @@
-import { type ComponentPropsWithoutRef } from 'react'
+import { forwardRef, type ComponentPropsWithoutRef } from 'react'
 
 export interface PictureProps extends ComponentPropsWithoutRef<'picture'> {}
 
-export function Picture(props: PictureProps) {
-	return <picture {...props} />
-}
+export const Picture = forwardRef<HTMLPictureElement, PictureProps>(
+	(props, ref) => {
+		return <picture ref={ref} {...props} />
+	},
+)
 
 export interface SourceProps extends ComponentPropsWithoutRef<'source'> {
 	images?: [Image, ...Image[]]
 }
 
-export function Source({ images, ...props }: SourceProps) {
-	return <source {...getSourceProps(images)} {...props} />
-}
+export const Source = forwardRef<HTMLSourceElement, SourceProps>(
+	({ images, ...props }, ref) => {
+		return <source ref={ref} {...getSourceProps(images)} {...props} />
+	},
+)
 
 function getSourceProps(
 	images: SourceProps['images'],
@@ -34,13 +38,20 @@ export interface ImgProps extends ComponentPropsWithoutRef<'img'> {
 	priority?: boolean
 }
 
-export function Img({ images, priority, ...props }: ImgProps) {
-	const imagesProps = getImagesProps(images)
+export const Img = forwardRef<HTMLImageElement, ImgProps>(
+	({ images, priority, ...props }, ref) => {
+		const imagesProps = getImagesProps(images)
 
-	return (
-		<img loading={priority ? 'eager' : 'lazy'} {...imagesProps} {...props} />
-	)
-}
+		return (
+			<img
+				ref={ref}
+				loading={priority ? 'eager' : 'lazy'}
+				{...imagesProps}
+				{...props}
+			/>
+		)
+	},
+)
 
 export interface Image {
 	metadata: {

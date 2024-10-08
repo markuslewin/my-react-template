@@ -1,16 +1,17 @@
-import { type SVGProps } from 'react'
+import { forwardRef, type SVGProps } from 'react'
 import spriteHref from '#app/components/icons/sprite.svg'
 import { type IconName } from '@/icon-name'
 
-export function Icon({
-	name,
-	...props
-}: SVGProps<SVGSVGElement> & {
+interface IconProps extends SVGProps<SVGSVGElement> {
 	name: IconName
-}) {
-	return (
-		<svg focusable="false" aria-hidden="true" {...props}>
-			<use href={`${spriteHref}#${name}`} />
-		</svg>
-	)
 }
+
+export const Icon = forwardRef<SVGSVGElement, IconProps>(
+	({ name, ...props }, ref) => {
+		return (
+			<svg ref={ref} focusable="false" aria-hidden="true" {...props}>
+				<use href={`${spriteHref}#${name}`} />
+			</svg>
+		)
+	},
+)
